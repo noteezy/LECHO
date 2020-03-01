@@ -20,4 +20,4 @@ Period</panel_attributes><additional_attributes></additional_attributes></elemen
 subject selection
 after the end of 
 selection period 
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>90</y><w>50</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>30;10;10;40</additional_attributes></element></diagram>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>90</y><w>50</w><h>60</h></coordinates><panel_attributes></panel_attributes><additional_attributes>30;10;10;40</additional_attributes></element></diagram>
