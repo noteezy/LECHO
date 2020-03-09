@@ -1,0 +1,5 @@
+D:\Projects\git\LECHO\LECHO\LECHO.Infrastructure\bin\Debug\netcoreapp3.1\LECHO.Infrastructure.deps.json
+D:\Projects\git\LECHO\LECHO\LECHO.Infrastructure\bin\Debug\netcoreapp3.1\LECHO.Infrastructure.dll
+D:\Projects\git\LECHO\LECHO\LECHO.Infrastructure\obj\Debug\netcoreapp3.1\LECHO.Infrastructure.csprojAssemblyReference.cache
+D:\Projects\git\LECHO\LECHO\LECHO.Infrastructure\obj\Debug\netcoreapp3.1\LECHO.Infrastructure.AssemblyInfoInputs.cache
+D:\Projects\git\LECHO\LECHO\LECHO.Infrastructure\obj\Debug\netcoreapp3.1\LECHO.Infrastructure.AssemblyInfo.cs
