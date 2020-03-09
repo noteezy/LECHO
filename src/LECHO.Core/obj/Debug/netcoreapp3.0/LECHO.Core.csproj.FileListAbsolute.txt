@@ -1,0 +1,11 @@
+D:\Projects\git\LECHO\LECHO\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.deps.json
+D:\Projects\git\LECHO\LECHO\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.dll
+D:\Projects\git\LECHO\LECHO\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.pdb
+D:\Projects\git\LECHO\LECHO\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
+D:\Projects\git\LECHO\LECHO\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.csprojAssemblyReference.cache
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.AssemblyInfoInputs.cache
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.AssemblyInfo.cs
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.csproj.CopyComplete
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.dll
+D:\Projects\git\LECHO\LECHO\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.pdb
