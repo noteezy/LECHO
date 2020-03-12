@@ -815,11 +815,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Core\\LECHO.Core.csproj",
+      "projectUniqueName": "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
       "projectName": "LECHO.Core",
-      "projectPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Core\\LECHO.Core.csproj",
+      "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
       "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Core\\obj\\",
+      "outputPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -838,8 +838,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
-              "projectPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj"
+            "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
+              "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj"
             }
           }
         }
