@@ -15,12 +15,12 @@ namespace LECHO.Infrastructure
         {
         }
 
-        public virtual DbSet<Choises> Choises { get; set; }
+        public virtual DbSet<Choices> Choices { get; set; }
         public virtual DbSet<Faculties> Faculties { get; set; }
         public virtual DbSet<Favourites> Favourites { get; set; }
-        public virtual DbSet<Lecturer> Lecturer { get; set; }
+        public virtual DbSet<Lecturers> Lecturers { get; set; }
         public virtual DbSet<Period> Period { get; set; }
-        public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -28,7 +28,6 @@ namespace LECHO.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //TODO
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=LECHO;Username=postgres;Password=v3lamalu");
             }
@@ -36,12 +35,12 @@ namespace LECHO.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Choises>(entity =>
+            modelBuilder.Entity<Choices>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.SubjectId })
                     .HasName("choises_pkey");
 
-                entity.ToTable("choises");
+                entity.ToTable("choices");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("fki_choises_subject_subject_id");
@@ -54,13 +53,13 @@ namespace LECHO.Infrastructure
                 entity.Property(e => e.SubjectId).HasColumnName("subject_id");
 
                 entity.HasOne(d => d.Subject)
-                    .WithMany(p => p.Choises)
+                    .WithMany(p => p.Choices)
                     .HasForeignKey(d => d.SubjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("choises_subject_subject_id");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Choises)
+                    .WithMany(p => p.Choices)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("choises_student_user_id");
@@ -75,9 +74,9 @@ namespace LECHO.Infrastructure
 
                 entity.Property(e => e.FacultyId).HasColumnName("faculty_id");
 
-                entity.Property(e => e.Adress)
+                entity.Property(e => e.Address)
                     .IsRequired()
-                    .HasColumnName("adress")
+                    .HasColumnName("address")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Description)
@@ -124,12 +123,12 @@ namespace LECHO.Infrastructure
                     .HasConstraintName("favourites_student_user_id");
             });
 
-            modelBuilder.Entity<Lecturer>(entity =>
+            modelBuilder.Entity<Lecturers>(entity =>
             {
                 entity.HasKey(e => e.UserId)
                     .HasName("lecturer_pkey");
 
-                entity.ToTable("lecturer");
+                entity.ToTable("lecturers");
 
                 entity.HasIndex(e => e.Faculty)
                     .HasName("fki_faculty_id_fkey");
@@ -146,14 +145,14 @@ namespace LECHO.Infrastructure
                     .HasMaxLength(2049);
 
                 entity.HasOne(d => d.FacultyNavigation)
-                    .WithMany(p => p.Lecturer)
+                    .WithMany(p => p.Lecturers)
                     .HasForeignKey(d => d.Faculty)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("lecturer_faulty_faculty_id_fkey");
 
                 entity.HasOne(d => d.User)
-                    .WithOne(p => p.Lecturer)
-                    .HasForeignKey<Lecturer>(d => d.UserId)
+                    .WithOne(p => p.Lecturers)
+                    .HasForeignKey<Lecturers>(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("lecturer_user_user_id_fkey");
             });
@@ -169,12 +168,12 @@ namespace LECHO.Infrastructure
                 entity.Property(e => e.PeriodEnd).HasColumnName("period_end");
             });
 
-            modelBuilder.Entity<Student>(entity =>
+            modelBuilder.Entity<Students>(entity =>
             {
                 entity.HasKey(e => e.UserId)
                     .HasName("student_pkey");
 
-                entity.ToTable("student");
+                entity.ToTable("students");
 
                 entity.HasIndex(e => e.Faculty)
                     .HasName("fki_student_faculty_faculty_id_fkey");
@@ -195,14 +194,14 @@ namespace LECHO.Infrastructure
                     .HasMaxLength(15);
 
                 entity.HasOne(d => d.FacultyNavigation)
-                    .WithMany(p => p.Student)
+                    .WithMany(p => p.Students)
                     .HasForeignKey(d => d.Faculty)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("faculty_id_fkey");
 
                 entity.HasOne(d => d.User)
-                    .WithOne(p => p.Student)
-                    .HasForeignKey<Student>(d => d.UserId)
+                    .WithOne(p => p.Students)
+                    .HasForeignKey<Students>(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("student_user_user_id_fkey");
             });
@@ -282,9 +281,9 @@ namespace LECHO.Infrastructure
                     .HasColumnName("login")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.MidleName)
+                entity.Property(e => e.MiddleName)
                     .IsRequired()
-                    .HasColumnName("midle_name")
+                    .HasColumnName("middle_name")
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Password)

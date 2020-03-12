@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace LECHO.Infrastructure
 {
-    public partial class Lecturer
+    public partial class Lecturers
     {
-        public Lecturer()
+        public Lecturers()
         {
             Subjects = new HashSet<Subjects>();
         }

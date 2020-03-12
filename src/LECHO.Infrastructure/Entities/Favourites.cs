@@ -9,6 +9,6 @@ namespace LECHO.Infrastructure
         public int SubjectId { get; set; }
 
         public virtual Subjects Subject { get; set; }
-        public virtual Student User { get; set; }
+        public virtual Students User { get; set; }
     }
 }

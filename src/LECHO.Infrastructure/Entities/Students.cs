@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LECHO.Infrastructure
 {
-    public partial class Student
+    public partial class Students
     {
-        public Student()
+        public Students()
         {
-            Choises = new HashSet<Choises>();
+            Choices = new HashSet<Choices>();
             Favourites = new HashSet<Favourites>();
         }
 
@@ -18,7 +18,7 @@ namespace LECHO.Infrastructure
 
         public virtual Faculties FacultyNavigation { get; set; }
         public virtual Users User { get; set; }
-        public virtual ICollection<Choises> Choises { get; set; }
+        public virtual ICollection<Choices> Choices { get; set; }
         public virtual ICollection<Favourites> Favourites { get; set; }
     }
 }

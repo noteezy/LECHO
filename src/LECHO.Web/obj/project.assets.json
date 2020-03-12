@@ -6621,11 +6621,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Web\\LECHO.Web.csproj",
+      "projectUniqueName": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
       "projectName": "LECHO.Web",
-      "projectPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Web\\LECHO.Web.csproj",
+      "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
       "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Web\\obj\\",
+      "outputPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6644,8 +6644,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Core\\LECHO.Core.csproj": {
-              "projectPath": "D:\\Projects\\git\\LECHO\\LECHO\\LECHO.Core\\LECHO.Core.csproj"
+            "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj": {
+              "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj"
             }
           }
         }

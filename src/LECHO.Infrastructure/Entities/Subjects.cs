@@ -7,7 +7,7 @@ namespace LECHO.Infrastructure
     {
         public Subjects()
         {
-            Choises = new HashSet<Choises>();
+            Choices = new HashSet<Choices>();
             Favourites = new HashSet<Favourites>();
         }
 
@@ -21,8 +21,8 @@ namespace LECHO.Infrastructure
         public int? Semester { get; set; }
 
         public virtual Faculties Faculty { get; set; }
-        public virtual Lecturer Lecturer { get; set; }
-        public virtual ICollection<Choises> Choises { get; set; }
+        public virtual Lecturers Lecturer { get; set; }
+        public virtual ICollection<Choices> Choices { get; set; }
         public virtual ICollection<Favourites> Favourites { get; set; }
     }
 }
