@@ -17,3 +17,13 @@ D:\Projects\git\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Inf
 D:\Projects\git\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.AssemblyInfo.cs
 D:\Projects\git\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
 D:\Projects\git\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
+F:\Projects\LECHO\src\LECHO.Infrastructure\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.deps.json
+F:\Projects\LECHO\src\LECHO.Infrastructure\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.runtimeconfig.json
+F:\Projects\LECHO\src\LECHO.Infrastructure\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.runtimeconfig.dev.json
+F:\Projects\LECHO\src\LECHO.Infrastructure\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
+F:\Projects\LECHO\src\LECHO.Infrastructure\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
+F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.csprojAssemblyReference.cache
+F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.AssemblyInfoInputs.cache
+F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.AssemblyInfo.cs
+F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
+F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb

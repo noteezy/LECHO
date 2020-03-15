@@ -20,3 +20,14 @@ D:\Projects\git\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.Assembly
 D:\Projects\git\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.csproj.CopyComplete
 D:\Projects\git\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.dll
 D:\Projects\git\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.pdb
+F:\Projects\LECHO\src\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.deps.json
+F:\Projects\LECHO\src\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.dll
+F:\Projects\LECHO\src\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Core.pdb
+F:\Projects\LECHO\src\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
+F:\Projects\LECHO\src\LECHO.Core\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.csprojAssemblyReference.cache
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.AssemblyInfoInputs.cache
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.AssemblyInfo.cs
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.csproj.CopyComplete
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.dll
+F:\Projects\LECHO\src\LECHO.Core\obj\Debug\netcoreapp3.0\LECHO.Core.pdb
