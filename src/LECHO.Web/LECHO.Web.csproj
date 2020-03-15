@@ -13,4 +13,8 @@
     <ProjectReference Include="..\LECHO.Core\LECHO.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
