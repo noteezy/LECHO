@@ -27,3 +27,4 @@ F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrast
 F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.AssemblyInfo.cs
 F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.dll
 F:\Projects\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
+D:\Projects\git\LECHO\src\LECHO.Infrastructure\obj\Debug\netcoreapp3.0\LECHO.Infrastructure.csprojAssemblyReference.cache

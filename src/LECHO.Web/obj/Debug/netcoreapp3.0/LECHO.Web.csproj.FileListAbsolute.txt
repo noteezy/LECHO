@@ -403,3 +403,8 @@ F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.Views.pdb
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.csproj.CopyComplete
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.dll
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.pdb
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Account\Profile.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Account\Profile.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutLecturer.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutStudent.cshtml.g.cs
