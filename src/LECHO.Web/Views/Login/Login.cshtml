@@ -1,0 +1,17 @@
+﻿@model LECHO.Infrastructure.Users
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div id="login-form">
+    <img src="~/img/temp_logo.png" alt="Logo" />
+    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+    {
+        @Html.EditorFor(Model => Model.Login, new { htmlAttributes = new { @placeholder = "Логін" } })
+        @Html.PasswordFor(Model => Model.Password, new { @placeholder = "Пароль" })
+        <button type="submit" name="name" value="Login">Увійти</button>
+    }
+</div>
+
+
