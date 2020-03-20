@@ -13,6 +13,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
+
 #line 1 "F:\Projects\LECHO\src\LECHO.Web\Views\_ViewImports.cshtml"
 using LECHO.Web;
 
@@ -20,6 +21,7 @@ using LECHO.Web;
 #line hidden
 #nullable disable
 #nullable restore
+
 #line 2 "F:\Projects\LECHO\src\LECHO.Web\Views\_ViewImports.cshtml"
 using LECHO.Web.Models;
 
@@ -57,7 +59,7 @@ using LECHO.Web.Models;
         {
 #nullable restore
 #line 1 "F:\Projects\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
-  
+
     ViewData["Title"] = "Profile";
     if (User.IsInRole("1"))
     {
@@ -109,7 +111,6 @@ using LECHO.Web.Models;
 #nullable restore
 #line 21 "F:\Projects\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
          Write(ViewData["FirstName"]);
-
 #line default
 #line hidden
 #nullable disable
@@ -117,7 +118,6 @@ using LECHO.Web.Models;
 #nullable restore
 #line 22 "F:\Projects\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
                 Write(ViewData["MiddleName"]);
-
 #line default
 #line hidden
 #nullable disable

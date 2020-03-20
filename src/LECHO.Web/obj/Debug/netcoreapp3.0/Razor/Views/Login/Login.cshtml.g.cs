@@ -58,7 +58,7 @@ using LECHO.Web.Models;
         {
 #nullable restore
 #line 2 "F:\Projects\LECHO\src\LECHO.Web\Views\Login\Login.cshtml"
-  
+
     ViewData["Title"] = "Login";
 
 #line default
@@ -84,7 +84,7 @@ using LECHO.Web.Models;
 #line 9 "F:\Projects\LECHO\src\LECHO.Web\Views\Login\Login.cshtml"
      using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
     {
-        
+
 
 #line default
 #line hidden

@@ -36,7 +36,7 @@ using LECHO.Web.Models;
             WriteLiteral("\r\n");
 #nullable restore
 #line 2 "F:\Projects\LECHO\src\LECHO.Web\Views\Login\Succesful.cshtml"
-  
+
     ViewData["Title"] = "Succesful";
 
 #line default

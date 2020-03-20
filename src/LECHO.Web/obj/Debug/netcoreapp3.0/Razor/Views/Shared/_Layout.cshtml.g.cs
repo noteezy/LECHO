@@ -150,7 +150,7 @@ using LECHO.Web.Models;
                 </button>
                 <div class=""navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"">
                     <ul class=""navbar-nav flex-grow-1"">
-                       
+                       <a href=""./Account/Profile"">Профіль</a>
                     </ul>
                 </div>
             </div>
