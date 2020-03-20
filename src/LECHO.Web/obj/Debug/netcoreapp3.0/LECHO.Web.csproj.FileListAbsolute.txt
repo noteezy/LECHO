@@ -408,3 +408,6 @@ F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Account\Prof
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutLecturer.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutStudent.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutLecturer.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LayoutStudent.cshtml.g.cs

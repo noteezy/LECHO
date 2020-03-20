@@ -28,7 +28,7 @@ namespace LECHO.Web
                 .AddCookie(options =>
                 {
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login");
-                    options.ExpireTimeSpan = TimeSpan.FromSeconds(20);
+                    options.ExpireTimeSpan = TimeSpan.MaxValue;
                 });
             services.AddControllersWithViews();
         }
