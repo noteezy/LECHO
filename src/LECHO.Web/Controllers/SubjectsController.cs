@@ -19,43 +19,43 @@ namespace LECHO.Web.Controllers
             map.Add("1", "Адмін");
             map.Add("2", "Викладач");
             map.Add("3", "Студент");
-            var user = AccountAccess.GetUser(User.Identity.Name);
-            Subjects[] model;
+            var user = AccountManagement.GetUser(User.Identity.Name);
+            Subjects[] subjectsList;
             ViewData["Information"] = "";
             if (user.Role == 3)
             {
-                var student = SubjectsAccess.GetStudent(user.UserId);
+                var student = AccountManagement.GetStudent(user.UserId);
                 if (student.Course == 1) 
                 {
-                    model = new List<Subjects>()
-                    .Concat(SubjectsAccess.GetSubjects(3))
-                    .Concat(SubjectsAccess.GetSubjects(4))
+                    subjectsList = new List<Subjects>()
+                    .Concat(SubjectManagement.GetSubjects(3))
+                    .Concat(SubjectManagement.GetSubjects(4))
                     .ToArray(); 
                 }
                 else if (student.Course == 2) 
                 {
-                    model = new List<Subjects>()
-                    .Concat(SubjectsAccess.GetSubjects(5))
-                    .Concat(SubjectsAccess.GetSubjects(6))
+                    subjectsList = new List<Subjects>()
+                    .Concat(SubjectManagement.GetSubjects(5))
+                    .Concat(SubjectManagement.GetSubjects(6))
                     .ToArray();
                 } 
                 else 
                 {
-                    model = SubjectsAccess.GetSubjects(1);
+                    subjectsList = SubjectManagement.GetSubjects(1);
                     ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                 }
                 
             } 
             else 
-            { 
-                model = new List<Subjects>()
-                .Concat(SubjectsAccess.GetSubjects(3))
-                .Concat(SubjectsAccess.GetSubjects(4))
-                .Concat(SubjectsAccess.GetSubjects(5))
-                .Concat(SubjectsAccess.GetSubjects(6))
+            {
+                subjectsList = new List<Subjects>()
+                .Concat(SubjectManagement.GetSubjects(3))
+                .Concat(SubjectManagement.GetSubjects(4))
+                .Concat(SubjectManagement.GetSubjects(5))
+                .Concat(SubjectManagement.GetSubjects(6))
                 .ToArray();
             }
-            return View(model);
+            return View(subjectsList);
         }
         // GET: /<controller>/
         public IActionResult Index()

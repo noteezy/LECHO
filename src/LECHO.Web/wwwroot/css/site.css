@@ -188,13 +188,6 @@ div.profile img {
     text-align:center;
 }*/
 
-.line {
-    margin-top: -1px;
-    margin-left: 10px;
-    width: 1120px;
-    height: 3px;
-    background: black;
-}
 .subjects{
     display:inline-block;
     margin-top: -1px;
@@ -202,7 +195,6 @@ div.profile img {
     width: 1120px;
     height:90px;
     border: 2px solid black;
-    /*border-top:none;*/
     margin-bottom:10px;
     border-radius:15px;
 }

@@ -24,7 +24,7 @@ namespace LECHO.Web.Controllers
             map.Add("2", "Викладач");
             map.Add("3", "Студент");
 
-            var user = AccountAccess.GetUser(User.Identity.Name);
+            var user = AccountManagement.GetUser(User.Identity.Name);
             ViewData["FirstName"] = user.FirstName;
             ViewData["LastName"] = user.LastName;
             ViewData["MiddleName"] = user.MiddleName;

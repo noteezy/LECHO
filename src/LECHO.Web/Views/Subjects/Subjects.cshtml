@@ -21,8 +21,7 @@
     if(@ViewData["Information"] == "")
     {
        <!-- <div class"redirectToSemester1"><a href="../Subjects/Subjects">Півріччя 1</a></div>
-        <div class"redirectToSemester2"><a href="../Subjects/SubjectsNextTerm">Півріччя 2</a></div> 
-        <div class="line"></div>-->
+        <div class"redirectToSemester2"><a href="../Subjects/SubjectsNextTerm">Півріччя 2</a></div> -->
     }
     else
     {   
@@ -32,8 +31,8 @@
 
 @foreach  (var subject in Model)
 {
-    Faculties faculty = SubjectsAccess.GetFaculty(subject.FacultyId);
-    Users lecturer = SubjectsAccess.GetLecturer(subject.LecturerId);
+    Faculties faculty = SubjectManagement.GetFaculty(subject.FacultyId);
+    Users lecturer = AccountManagement.GetLecturer(subject.LecturerId);
 <div class="subjects">
     <input type="checkbox">
     <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
