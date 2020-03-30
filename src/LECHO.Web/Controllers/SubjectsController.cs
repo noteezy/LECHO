@@ -16,10 +16,6 @@ namespace LECHO.Web.Controllers
 
         public ViewResult SubjectsFirstTerm()
         {
-            var map = new Dictionary<string, string>();
-            map.Add("1", "Адмін");
-            map.Add("2", "Викладач");
-            map.Add("3", "Студент");
             var user = AccountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
             ViewData["Information"] = "";
@@ -54,10 +50,6 @@ namespace LECHO.Web.Controllers
 
         public ViewResult SubjectsSecondTerm()
         {
-            var map = new Dictionary<string, string>();
-            map.Add("1", "Адмін");
-            map.Add("2", "Викладач");
-            map.Add("3", "Студент");
             var user = AccountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
             ViewData["Information"] = "";

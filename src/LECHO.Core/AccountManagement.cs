@@ -21,7 +21,7 @@ namespace LECHO.Core
         {
             var user = database.Users.FirstOrDefault(u => u.Login == username);
 
-            if (user == null) throw new UserNotFoundException("Користувач з таким іменем не знайдений");
+            if (user == null) throw new UserNotFoundException("Користувач з таким логіном не знайдений");
 
             return user;
         }
