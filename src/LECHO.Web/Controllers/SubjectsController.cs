@@ -14,7 +14,7 @@ namespace LECHO.Web.Controllers
     {
         [Authorize]
 
-        public ViewResult SubjectsFirstTerm()
+        public ViewResult SubjectsFirstTerm(string Search)
         {
             var user = AccountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
@@ -45,10 +45,15 @@ namespace LECHO.Web.Controllers
                 .Concat(SubjectManagement.GetSubjects(5))
                 .ToArray();
             }
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = SubjectManagement.GetSubjectsByTitle(Search, subjectsList);
+            }
             return View(subjectsList);
         }
 
-        public ViewResult SubjectsSecondTerm()
+        public ViewResult SubjectsSecondTerm(string Search)
         {
             var user = AccountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
@@ -77,6 +82,11 @@ namespace LECHO.Web.Controllers
                 .Concat(SubjectManagement.GetSubjects(4))
                 .Concat(SubjectManagement.GetSubjects(6))
                 .ToArray();
+            }
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = SubjectManagement.GetSubjectsByTitle(Search, subjectsList);
             }
             return View(subjectsList);
         }
