@@ -19,10 +19,10 @@ namespace LECHO.Core
             return faculty;
         }
 
-        public static Subjects[] GetSubjects(string title)
+        public static Subjects[] GetSubjectsByTitle(string title, Subjects[] subjects)
         {
             string[] titleParts = title.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            var selectedSubjects = database.Subjects.ToArray().Where(r => titleParts.Any(t => r.Name.Contains(t))).Select(r => r).ToArray();
+            var selectedSubjects = subjects.Where(r => titleParts.Any(t => r.Name.Contains(t))).Select(r => r).ToArray();
             return selectedSubjects;
         }
     }

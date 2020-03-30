@@ -24,6 +24,12 @@
             <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
             <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
         </ul>
+        <form asp-controller="Subjects" asp-action="SubjectsFirstTerm" method="get" class="SearchBox">
+            <p>
+                <input type="text" name="Search" class="TextInput">
+                <input class="SearchButton" type="submit" value="Filter" />
+            </p>
+        </form>
     }
     else
     {

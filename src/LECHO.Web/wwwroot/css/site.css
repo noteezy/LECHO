@@ -165,7 +165,7 @@ div.profile img {
     list-style-type: none;
 }
 .redirectToFirst {
-    position: fixed;
+    position: absolute;
     top: 57px;
     left: 5px;
     width: 100px;
@@ -176,8 +176,8 @@ div.profile img {
     border-bottom-left-radius: 10px;
     
 }
-.redirectToSecond{
-    position: fixed;
+.redirectToSecond {
+    position: absolute;
     top: 57px;
     left: 107px;
     width: 100px;
@@ -186,7 +186,6 @@ div.profile img {
     border-top: none;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-
 }
 .redirectToTerms li:hover {
     text-decoration-line: none;
@@ -199,6 +198,33 @@ div.profile img {
     color:black;
 }
 
+.SearchBox {
+    position: absolute;
+    top: 15px;
+    left: 640px;
+}
+
+.TextInput {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.TextInput:hover {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.SearchButton {
+    border: 1px solid black;
+    background: white;
+    border-radius: 10px;
+}
+
+.SearchButton:hover {
+    border: 1px solid black;
+    background: #d9d9d9;
+    border-radius: 10px;
+}
 
 .subjects{
     display:inline-block;
