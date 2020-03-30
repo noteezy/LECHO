@@ -20,12 +20,14 @@
 @{
     if(@ViewData["Information"] == "")
     {
-       <!-- <div class"redirectToSemester1"><a href="../Subjects/Subjects">Півріччя 1</a></div>
-        <div class"redirectToSemester2"><a href="../Subjects/SubjectsNextTerm">Півріччя 2</a></div> -->
+        <ul class="redirectToTerms">
+            <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
+            <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+        </ul>
     }
     else
     {   
-        <p class="chit">@ViewData["Information"]</p>
+        <p class="older-students">@ViewData["Information"]</p>
     }
 }
 
