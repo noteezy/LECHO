@@ -70,20 +70,20 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-/* HEADER PAGE STYLE START */
+/* HEADER + MENU PAGE STYLE START */
 header img{
     width: 20px;
 }
-ul.menu-admin {
+ul.top-menu {
     justify-content: flex-end;
 }
-ul.menu-admin li{
+ul.top-menu li{
     margin:0px 15px;
 }
-ul.menu-admin li a{
+ul.top-menu li a {
     color: black;
 }
-ul.menu-admin li a:hover {
+ul.top-menu li a:hover {
     text-decoration-color: black;
 }
 /* HEADER PAGE STYLE END */
