@@ -13,6 +13,7 @@ namespace LECHO.Web.Controllers
     public class SubjectsController : Controller
     {
         [Authorize]
+
         public ViewResult SubjectsFirstTerm()
         {
             var map = new Dictionary<string, string>();
@@ -32,6 +33,7 @@ namespace LECHO.Web.Controllers
                 else if (student.Course == 2) 
                 {
                     subjectsList = SubjectManagement.GetSubjects(5);
+
                 } 
                 else 
                 {

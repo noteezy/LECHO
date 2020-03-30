@@ -20,7 +20,9 @@ namespace LECHO.Core
         public static Users GetUser(string username)
         {
             var user = database.Users.FirstOrDefault(u => u.Login == username);
+
             if (user == null) throw new UserNotFoundException("Користувач з таким іменем не знайдений");
+
             return user;
         }
         public static Users GetLecturer(int id)
