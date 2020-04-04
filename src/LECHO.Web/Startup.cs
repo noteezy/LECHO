@@ -35,7 +35,7 @@ namespace LECHO.Web
                 });
             services.AddControllersWithViews();
             services.AddDbContext<LECHOContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
-            services.AddScoped<IAccountManager,AccountManagement>();
+            services.AddScoped<AccountManagement>();
             services.AddScoped<SubjectManagement>();
         }
 
