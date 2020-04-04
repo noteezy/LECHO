@@ -16,6 +16,14 @@ namespace LECHO.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly AccountManagement accountManagement;
+        private readonly SubjectManagement subjectManagement;
+        public AccountController(AccountManagement _accountManagement,
+                                  SubjectManagement _subjectManagement)
+        {
+            accountManagement = _accountManagement;
+            subjectManagement = _subjectManagement;
+        }
         [Authorize]
         public IActionResult Profile()
         {
@@ -24,7 +32,7 @@ namespace LECHO.Web.Controllers
             map.Add("2", "Викладач");
             map.Add("3", "Студент");
 
-            var user = AccountManagement.GetUser(User.Identity.Name);
+            var user = accountManagement.GetUser(User.Identity.Name);
             ViewData["FirstName"] = user.FirstName;
             ViewData["LastName"] = user.LastName;
             ViewData["MiddleName"] = user.MiddleName;

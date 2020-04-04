@@ -31,14 +31,11 @@
 
 @foreach  (var subject in Model)
 {
-    Faculties faculty = SubjectManagement.GetFaculty(subject.FacultyId);
-    Users lecturer = AccountManagement.GetLecturer(subject.LecturerId);
+    
 <div class="subjects">
     <input type="checkbox">
     <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
     <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
-    <h3>@lecturer.LastName @lecturer.FirstName @lecturer.MiddleName</h3>
-    <h4>@faculty.Name</h4>
     <div class="information">
         <p></p>
     </div>
