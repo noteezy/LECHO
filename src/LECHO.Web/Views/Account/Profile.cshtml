@@ -1,7 +1,23 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Profile";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+    else if (User.IsInRole("3"))
+    {
+        Layout = "_LayoutStudent";
+    }
 }
 
-<h1>Profile</h1>
-@User.Identity.Name
+<div class="profile">
+    <img src="~/img/profile.png" />
+    <h1>@ViewData["Role"]</h1>
+    <h2>Прізвище: @ViewData["LastName"]</h2>
+    <h2>Ім'я: @ViewData["FirstName"]</h2>
+    <h2>По-батькові: @ViewData["MiddleName"]</h2>
+</div>
