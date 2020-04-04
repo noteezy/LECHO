@@ -1,0 +1,56 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject SubjectManagement subjectManagement;
+@inject AccountManagement accountManagement;
+
+@{
+    ViewData["Title"] = "Sub";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+    else if (User.IsInRole("3"))
+    {
+        Layout = "_LayoutStudent";
+    }
+}
+
+@{
+    if (@ViewData["Information"].ToString()==String.Empty)
+    {
+        <ul class="redirectToTerms">
+            <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
+            <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+        </ul>
+        <form asp-controller="Subjects" asp-action="SubjectsFirstTerm" method="get" class="SearchBox">
+            <p>
+                <input type="text" name="Search" class="TextInput">
+                <input class="SearchButton" type="submit" value="Filter" />
+            </p>
+        </form>
+    }
+    else
+    {
+        <p class="SubjectsPageViewForOlderStudents">@ViewData["Information"]</p>
+    }
+}
+
+@foreach (var subject in Model)
+{
+    Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
+    Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
+    <div class="subjects">
+        <input type="checkbox">
+        <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
+        <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
+        <h3>@lecturer.LastName @lecturer.FirstName @lecturer.MiddleName</h3>
+        <h4>@faculty.Name</h4>
+        <div class="information">
+            <p></p>
+        </div>
+    </div>
+}

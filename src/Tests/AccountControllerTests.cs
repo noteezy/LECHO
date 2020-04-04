@@ -16,13 +16,17 @@ namespace Tests
         [Fact]
         public void TestProfileViewData()
         {
-            string TestUser = "Admin";
-            AccountController controller = new AccountController();
+            
+            Users testuser = new Users { FirstName = "TestUserFirstname", MiddleName = "testcUsetMiddleame", LastName = "testUserLastname" };
+            var accmock = new Mock<AccountManagement>();
+            accmock.Setup(a => a.GetUser(It.IsAny<string>())).Returns(testuser);
+            var subjMoc = new Mock<SubjectManagement>();
+            AccountController controller = new AccountController(accmock.Object,subjMoc.Object);
             var mock = new Mock<HttpContext>();
             mock.Setup(x => x.User.Identity.IsAuthenticated).Returns(true);
-            mock.SetupGet(x => x.User.Identity.Name).Returns(TestUser);
+            mock.Setup(x => x.User.Identity.Name).Returns(It.IsAny<string>().ToString());
             controller.ControllerContext.HttpContext = mock.Object;
-            
+ 
             var result = controller.Profile() as ViewResult;
             
             Assert.NotNull(result.ViewData["FirstName"]);
@@ -32,10 +36,13 @@ namespace Tests
         [Fact]
         public void ProfileViewResultNotNullTest()
         {
-            AccountController controller = new AccountController();
+            var accmock = new Mock<AccountManagement>();
+            Users testuser = new Users { FirstName = "TestUserFirstname", MiddleName = "testcUsetMiddleame", LastName = "testUserLastname" };
+            accmock.SetupGet(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
+            var subjMoc = new Mock<SubjectManagement>();
+            AccountController controller = new AccountController(accmock.Object, subjMoc.Object);
             var mock = new Mock<HttpContext>();
             mock.Setup(x => x.User.Identity.IsAuthenticated).Returns(true);
-            mock.SetupGet(x => x.User.Identity.Name).Returns("Admin");
             controller.ControllerContext.HttpContext = mock.Object;
             
             var result = controller.Profile() as ViewResult;

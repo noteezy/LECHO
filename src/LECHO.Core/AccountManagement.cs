@@ -3,7 +3,10 @@ using System.Linq;
 using LECHO.Infrastructure;
 namespace LECHO.Core
 {
-    public class AccountManagement
+    public interface IAccountManager
+    {
+    }
+    public class AccountManagement:IAccountManager
     {
         public class UserNotFoundException : Exception
         {
