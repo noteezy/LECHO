@@ -35,9 +35,9 @@ namespace LECHO.Web.Controllers
                 return RedirectToAction("Profile", "Account");
             try
             {
-                if (AccountAccess.Verify(user.Login, user.Password))
+                if (AccountManagement.Verify(user.Login, user.Password))
                 {
-                    await Authenticate(AccountAccess.GetUser(user.Login));
+                    await Authenticate(AccountManagement.GetUser(user.Login));
                     return RedirectToAction("Profile", "Account");
                 }
                 else

@@ -144,3 +144,104 @@ div.profile img {
     width: 200px;
 }
 /* LOGIN PAGE STYLE END */
+
+/* SUBJECTS PAGE STYLE START */
+.chit {
+    padding-top:23px;
+    margin-left: 10px;
+    width: 1120px;
+    height: 110px;
+    margin-top: 4px;
+    font-size: 34px;
+    border-radius: 25px;
+    background: #ededed;
+    text-align:center;
+}
+/*.redirectToSemester1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.redirectToSemester1:hover {
+    border: 2px solid black;
+    background-color: #d9d9d9;
+    text-align:center;
+}
+.redirectToSemester2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.redirectToSemester2:hover {
+    border: 2px solid black;
+    background-color: #d9d9d9;
+    text-align:center;
+}*/
+
+.subjects{
+    display:inline-block;
+    margin-top: -1px;
+    margin-left:10px;
+    width: 1120px;
+    height:90px;
+    border: 2px solid black;
+    margin-bottom:10px;
+    border-radius:15px;
+}
+.subjects input{
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin: 38px;
+    border: 1px solid black;
+}
+.subjects h1{
+    position:relative;
+    margin-left: 80px;
+    margin-top: -95px;
+}
+
+.subjects h1 a{
+    text-decoration-line:none;
+    color: black;
+    font-size: 20px;
+}
+.subjects p{
+    position: relative;
+    font-size:14px;
+    margin-left: 80px;
+}
+.subjects h3{
+    position: relative;
+    float:right;
+    font-size: 16px;
+    margin-top: -68px;
+    margin-right: 20px;
+}
+.subjects h4{
+    position: relative;
+    float:right;
+    font-size: 14px;
+    font-weight:normal;
+    margin-right: 20px;
+    margin-top: -34px;
+}
+/*.subjects .information {
+    position:relative;
+    width: 906px;
+    height:20px;
+    background: #d7dbd8;
+    border: none;
+    margin-top:-6px;
+}*/
+/* SUBJECTS PAGE STYLE END */
