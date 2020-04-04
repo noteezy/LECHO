@@ -12,6 +12,14 @@ namespace LECHO.Web.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly AccountManagement accountManagement;
+        private readonly SubjectManagement subjectManagement;
+        public LoginController(AccountManagement _accountManagement,
+                               SubjectManagement _subjectManagement)
+        {
+            accountManagement = _accountManagement;
+            subjectManagement = _subjectManagement;
+        }
         public ActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -35,9 +43,9 @@ namespace LECHO.Web.Controllers
                 return RedirectToAction("Profile", "Account");
             try
             {
-                if (AccountManagement.Verify(user.Login, user.Password))
+                if (accountManagement.Verify(user.Login, user.Password))
                 {
-                    await Authenticate(AccountManagement.GetUser(user.Login));
+                    await Authenticate(accountManagement.GetUser(user.Login));
                     return RedirectToAction("Profile", "Account");
                 }
                 else

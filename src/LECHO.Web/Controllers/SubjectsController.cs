@@ -12,28 +12,45 @@ namespace LECHO.Web.Controllers
     [Authorize]
     public class SubjectsController : Controller
     {
+        private readonly AccountManagement accountManagement;
+        private readonly SubjectManagement subjectManagement;
+        public SubjectsController(AccountManagement _accountManagement,
+                                 SubjectManagement _subjectManagement)
+        {
+            accountManagement = _accountManagement;
+            subjectManagement = _subjectManagement;
+        }
         [Authorize]
 
         public ViewResult SubjectsFirstTerm(string Search)
         {
-            var user = AccountManagement.GetUser(User.Identity.Name);
+            var map = new Dictionary<string, string>();
+            map.Add("1", "Адмін");
+            map.Add("2", "Викладач");
+            map.Add("3", "Студент");
+            var user = accountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
             ViewData["Information"] = "";
             if (user.Role == 3)
             {
-                var student = AccountManagement.GetStudent(user.UserId);
+                var student = accountManagement.GetStudent(user.UserId);
                 if (student.Course == 1) 
                 {
-                    subjectsList = SubjectManagement.GetSubjects(3);
+                    subjectsList = new List<Subjects>()
+                    .Concat(subjectManagement.GetSubjects(3))
+                    .Concat(subjectManagement.GetSubjects(4))
+                    .ToArray(); 
                 }
                 else if (student.Course == 2) 
                 {
-                    subjectsList = SubjectManagement.GetSubjects(5);
-
+                    subjectsList = new List<Subjects>()
+                    .Concat(subjectManagement.GetSubjects(5))
+                    .Concat(subjectManagement.GetSubjects(6))
+                    .ToArray();
                 } 
                 else 
                 {
-                    subjectsList = SubjectManagement.GetSubjects(1);
+                    subjectsList = subjectManagement.GetSubjects(1);
                     ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                 }
                 
@@ -41,37 +58,39 @@ namespace LECHO.Web.Controllers
             else 
             {
                 subjectsList = new List<Subjects>()
-                .Concat(SubjectManagement.GetSubjects(3))
-                .Concat(SubjectManagement.GetSubjects(5))
+                .Concat(subjectManagement.GetSubjects(3))
+                .Concat(subjectManagement.GetSubjects(4))
+                .Concat(subjectManagement.GetSubjects(5))
+                .Concat(subjectManagement.GetSubjects(6))
                 .ToArray();
             }
 
             if (!String.IsNullOrEmpty(Search))
             {
-                subjectsList = SubjectManagement.GetSubjectsByTitle(Search, subjectsList);
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
             }
             return View(subjectsList);
         }
 
         public ViewResult SubjectsSecondTerm(string Search)
         {
-            var user = AccountManagement.GetUser(User.Identity.Name);
+            var user = accountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
             ViewData["Information"] = "";
             if (user.Role == 3)
             {
-                var student = AccountManagement.GetStudent(user.UserId);
+                var student = accountManagement.GetStudent(user.UserId);
                 if (student.Course == 1)
                 {
-                    subjectsList = SubjectManagement.GetSubjects(4);
+                    subjectsList = subjectManagement.GetSubjects(4);
                 }
                 else if (student.Course == 2)
                 {
-                    subjectsList = SubjectManagement.GetSubjects(6);
+                    subjectsList =  subjectManagement.GetSubjects(6);
                 }
                 else
                 {
-                    subjectsList = SubjectManagement.GetSubjects(1);
+                    subjectsList =  subjectManagement.GetSubjects(1);
                     ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                 }
 
@@ -79,14 +98,14 @@ namespace LECHO.Web.Controllers
             else
             {
                 subjectsList = new List<Subjects>()
-                .Concat(SubjectManagement.GetSubjects(4))
-                .Concat(SubjectManagement.GetSubjects(6))
+                .Concat(subjectManagement.GetSubjects(4))
+                .Concat(subjectManagement.GetSubjects(6))
                 .ToArray();
             }
 
             if (!String.IsNullOrEmpty(Search))
             {
-                subjectsList = SubjectManagement.GetSubjectsByTitle(Search, subjectsList);
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
             }
             return View(subjectsList);
         }
