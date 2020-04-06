@@ -146,7 +146,19 @@ div.profile img {
 /* LOGIN PAGE STYLE END */
 
 /* SUBJECTS PAGE STYLE START */
-.SubjectsPageViewForOlderStudents {
+.subject-menu ul {
+    list-style-type: none;
+    text-align: right;
+}
+.subject-menu ul li{
+    display: inline;
+}
+.subject-menu ul li a{
+    font-size: 25px;
+    color: black;
+    margin-right: 10px;
+}
+/*.SubjectsPageViewForOlderStudents {
     padding-top: 23px;
     margin-left: 10px;
     width: 1120px;
@@ -195,14 +207,11 @@ div.profile img {
     background-color: #d9d9d9;
     text-align: center;
     color:black;
-}
+}*/
 
 .SearchBox {
-    position: absolute;
-    top: 15px;
-    left: 640px;
+    align-self: flex-end;
 }
-
 .TextInput {
     border: 1px solid black;
     border-radius: 10px;
@@ -224,63 +233,46 @@ div.profile img {
     background: #d9d9d9;
     border-radius: 10px;
 }
-
-.subjects{
-    display:inline-block;
-    margin-top: -1px;
-    margin-left:10px;
-    width: 1120px;
-    height:90px;
+/*main subject content*/
+div.subjects {
     border: 2px solid black;
-    margin-bottom:10px;
-    border-radius:15px;
-}
-.subjects input{
-    position: relative;
-    width: 14px;
-    height: 14px;
-    margin: 38px;
-    border: 1px solid black;
-}
-.subjects h1{
-    position:relative;
-    margin-left: 80px;
-    margin-top: -95px;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 7px 0;
 }
 
-.subjects h1 a{
-    text-decoration-line:none;
+.subjects h1 {
+    font-size: 25px;
+}
+
+.subjects a {
     color: black;
-    font-size: 20px;
 }
-.subjects p{
-    position: relative;
-    font-size:14px;
-    margin-left: 80px;
+
+div.all-subjects-fav-button{
+    display: flex;
+    align-items: center;
 }
-.subjects h3{
-    position: relative;
-    float:right;
-    font-size: 16px;
-    margin-top: -68px;
-    margin-right: 20px;
+
+.all-subjects-info {
+    align-items: center;
 }
-.subjects h4{
-    position: relative;
-    float:right;
-    font-size: 14px;
-    font-weight:normal;
-    margin-right: 20px;
-    margin-top: -34px;
+
+.all-subjects-lecture-info
+{
+    text-align:right;
+    align-items: center;
 }
 
 .subjects button {
     border: none;
     background: transparent;
     background-image: url("../img/heart.png");
-    width: 70px;
+    width: 50px;
     height: 50px;
-    background-size: contain;
+    background-size: cover;
+    align-self: center;
+    margin: 0 auto;
 }
 /*.subjects .information {
     position:relative;
