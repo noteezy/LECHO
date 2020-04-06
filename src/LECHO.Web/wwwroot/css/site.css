@@ -185,7 +185,7 @@ div.profile img {
     border-top: none;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    
+
 }
 .redirectToSecond {
     position: absolute;
@@ -273,6 +273,15 @@ div.all-subjects-fav-button{
     background-size: cover;
     align-self: center;
     margin: 0 auto;
+}
+
+.subjects button {
+    border: none;
+    background: transparent;
+    background-image: url("../img/heart.png");
+    width: 70px;
+    height: 50px;
+    background-size: contain;
 }
 /*.subjects .information {
     position:relative;
