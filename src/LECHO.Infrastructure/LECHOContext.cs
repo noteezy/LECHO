@@ -31,6 +31,7 @@ namespace LECHO.Infrastructure
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=LECHO;Username=postgres;Password=Qwerty1");
                 //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=LECHO;Username=postgres;Password=12345");
                 //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=LECHO;Username=postgres;Password=v3lamalu");
+                throw new Exception("Database is not configured");
             }
         }
 

@@ -15,27 +15,30 @@ namespace LECHO.Core
               System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
         }
 
-        static private LECHOContext database = new LECHOContext();
+        private LECHOContext database;
+        public AccountManagement(LECHOContext dm)
+        {
+            database = dm;
+        }
 
-        public static Users GetUser(string username)
+        public Users GetUser(string username)
         {
             var user = database.Users.FirstOrDefault(u => u.Login == username);
-
             if (user == null) throw new UserNotFoundException("Користувач з таким логіном не знайдений");
-
             return user;
         }
-        public static Users GetLecturer(int id)
+
+        public Users GetLecturer(int id)
         {
             var user = database.Users.FirstOrDefault(u => u.UserId == id);
             return user;
         }
-        public static Students GetStudent(int id)
+        public Students GetStudent(int id)
         {
             var user = database.Students.FirstOrDefault(u => u.UserId == id);
             return user;
         }
-        public static bool Verify(string username, string password)
+        public bool Verify(string username, string password)
         {
             return GetUser(username).Password == password;
         }
