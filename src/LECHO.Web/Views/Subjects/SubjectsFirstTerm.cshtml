@@ -22,39 +22,42 @@
 @{
     if (@ViewData["Information"].ToString() == String.Empty)
     {
-        <ul class="redirectToTerms">
-            <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
-            <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
-        </ul>
-        <form asp-controller="Subjects" asp-action="SubjectsFirstTerm" method="get" class="SearchBox">
-            <p>
-                <input type="text" name="Search" class="TextInput">
-                <input class="SearchButton" type="submit" value="Filter" />
-            </p>
-        </form>
+        <div class="row subject-menu">
+            <ul class="redirectToTerms col-md-6">
+                <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
+                <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+            </ul>
+            <form asp-controller="Subjects" asp-action="SubjectsFirstTerm" method="get" class="SearchBox col-md-6">
+                <p>
+                    <input type="text" name="Search" class="TextInput">
+                    <input class="SearchButton" type="submit" value="Filter" />
+                </p>
+            </form>
+        </div>
     }
     else
     {
         <p class="SubjectsPageViewForOlderStudents">@ViewData["Information"]</p>
     }
 }
-
-@foreach (var subject in Model)
-{
-    Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
-    Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
-    <div class="subjects row">
-        @*<input type="checkbox">*@
-        <button onclick="add_to_favourite(@subject.SubjectId)"></button>
-        <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
-        <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
-        <h3>@lecturer.LastName @lecturer.FirstName @lecturer.MiddleName</h3>
-        <h4>@faculty.Name</h4>
-        <div class="information">
-            <p></p>
+<div>
+    @foreach (var subject in Model)
+    {
+        Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
+        Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
+        <div class="subjects row">
+            <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)"></button></div>
+            <div class="col-md-7 all-subjects-info">
+                <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
+                <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
+            </div>
+            <div class="col-md-4 all-subjects-lecture-info">
+                <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
+                <h6>@faculty.Name</h6>
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
 
 <script>
     function add_to_favourite(id) {
