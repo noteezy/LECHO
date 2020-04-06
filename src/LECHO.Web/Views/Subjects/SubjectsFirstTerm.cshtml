@@ -20,7 +20,7 @@
 }
 
 @{
-    if (@ViewData["Information"] .ToString()==String.Empty)
+    if (@ViewData["Information"].ToString() == String.Empty)
     {
         <ul class="redirectToTerms">
             <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
@@ -43,8 +43,9 @@
 {
     Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
     Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
-    <div class="subjects">
-        <input type="checkbox">
+    <div class="subjects row">
+        @*<input type="checkbox">*@
+        <button onclick="add_to_favourite(@subject.SubjectId)"></button>
         <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
         <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
         <h3>@lecturer.LastName @lecturer.FirstName @lecturer.MiddleName</h3>
@@ -54,3 +55,21 @@
         </div>
     </div>
 }
+
+<script>
+    function add_to_favourite(id) {
+        $.ajax({
+            url: "@Url.Action("AddSubjectToFavourite")",
+            method: "POST",
+            data: {
+                "SubjId": id,
+            },
+            success:function() {
+                alert("Предмет додано у обране!");
+            },
+            error:function(response){
+             alert(response);
+             }
+        });
+    }
+</script>
