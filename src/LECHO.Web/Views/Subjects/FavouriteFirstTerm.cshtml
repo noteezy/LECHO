@@ -1,12 +1,10 @@
 ﻿@using LECHO.Infrastructure;
 @using LECHO.Core;
-
-@inject ISubjectManagement subjectManagement;
-@inject IAccountManagement accountManagement;
+@inject SubjectManagement subjectManagement;
+@inject AccountManagement accountManagement;
 @model IEnumerable<LECHO.Infrastructure.Subjects>
-
 @{
-    ViewData["Title"] = "Sub";
+    ViewData["Title"] = "FavouriteFirstTerm";
     if (User.IsInRole("1"))
     {
         Layout = "_LayoutAdmin";
@@ -26,10 +24,10 @@
     {
         <div class="row subject-menu">
             <ul class="redirectToTerms col-md-6">
-                <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
-                <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+                <li class="redirectToFirst"><a href="../Subjects/FavouriteFirstTerm">Півріччя 1</a></li>
+                <li class="redirectToSecond"><a href="../Subjects/FavouriteSecondTerm">Півріччя 2</a></li>
             </ul>
-            <form asp-controller="Subjects" asp-action="SubjectsSecondTerm" method="get" class="SearchBox col-md-6">
+            <form asp-controller="Subjects" asp-action="FavouriteFirstTerm" method="get" class="SearchBox col-md-6">
                 <p>
                     <input type="text" name="Search" class="TextInput">
                     <input class="SearchButton" type="submit" value="Filter" />
@@ -47,19 +45,8 @@
     {
         Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
         Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
-        Favourites favourite = subjectManagement.GetFavourite(subject.SubjectId);
         <div class="subjects row">
-        @{
-            if (favourite == null)
-            {
-                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)"></button></div>
-            }
-            else
-            {
-                
-                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)" style="background-image:url(../img/bookmark_favourite.png);"></button></div>
-            }
-        }
+            <div class="col-md-1 all-subjects-fav-button"><input type="checkbox"></div>
             <div class="col-md-7 all-subjects-info">
                 <h1><a href="../Subjects/SubjectsFirstTerm">@subject.Name</a></h1>
                 <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
@@ -72,20 +59,3 @@
     }
 </div>
 
-<script>
-    function add_to_favourite(id) {
-        $.ajax({
-            url: "@Url.Action("AddSubjectToFavourite")",
-            method: "POST",
-            data: {
-                "SubjId": id,
-            },
-            success:function() {
-                alert("Предмет додано у обране!");
-            },
-            error:function(response){
-             alert(response);
-             }
-        });
-    }
-</script>

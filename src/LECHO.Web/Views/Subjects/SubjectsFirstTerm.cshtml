@@ -45,17 +45,28 @@
     {
         Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
         Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
-        <div class="subjects row">
-            <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)"></button></div>
-            <div class="col-md-7 all-subjects-info">
-                <h1><a href="../Subjects/Subjects">@subject.Name</a></h1>
-                <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
-            </div>
-            <div class="col-md-4 all-subjects-lecture-info">
-                <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
-                <h6>@faculty.Name</h6>
-            </div>
+        Favourites favourite = subjectManagement.GetFavourite(subject.SubjectId);
+    <div class="subjects row">
+        @{
+            if (favourite == null)
+            {
+                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)"></button></div>
+            }
+            else
+            {
+                
+                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)" style="background-image:url(../img/bookmark_favourite.png);"></button></div>
+            }
+        }
+        <div class="col-md-7 all-subjects-info">
+            <h1><a href="../Subjects/FavouriteFirstTerm">@subject.Name</a></h1>
+            <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
         </div>
+        <div class="col-md-4 all-subjects-lecture-info">
+            <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
+            <h6>@faculty.Name</h6>
+        </div>
+    </div>
     }
 </div>
 
