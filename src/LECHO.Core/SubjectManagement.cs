@@ -36,28 +36,13 @@ namespace LECHO.Core
         }
         public Subjects[] GetFavouriteSubjects(int _UserId, int semester)
         {
-            var subjectsList = database.Favourites.ToArray().Where(u => u.UserId == _UserId).Select(u => u).ToArray();
-            Subjects[] subject = new Subjects[subjectsList.Length];
-            var length = 0;
-            for (int i = 0; i < subjectsList.Length; i++)
-            {
-                subject[i] = (database.Subjects.FirstOrDefault(u => u.SubjectId == subjectsList[i].SubjectId));
-                if (subject[i].Semester == semester)
-                {
-                    length++;
-                }
-            }
-            Subjects[] result = new Subjects[length];
-            var count = 0;
-            for (int i = 0; i < subject.Length; i++)
-            {
-                if(subject[i].Semester == semester)
-                {
-                    result[count] = subject[i];
-                    count++;
-                }
-            }
-            return result;
+            var subjectsList = database.Subjects
+                .Where(s => (database.Favourites.Where(f=>f.UserId==_UserId)
+                .Any(f => f.SubjectId == s.SubjectId)))
+                .Where(s=>s.Semester==semester)
+                .Select(s=>s)
+                .ToArray();
+            return subjectsList;
         }
         public void AddSubjectToFavourite(int _UserId, int _SubjId)
         {
