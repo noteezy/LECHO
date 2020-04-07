@@ -29,6 +29,12 @@ namespace LECHO.Core
             var selectedSubjects = subjects.Where(r => titleParts.Any(t => r.Name.Contains(t))).Select(r => r).ToArray();
             return selectedSubjects;
         }
+
+        public void AddSubjectToFavourite(int _UserId, int _SubjId)
+        {
+            database.Favourites.Add(new Favourites { UserId = _UserId, SubjectId = _SubjId });
+            database.SaveChanges();
+        }
     }
 }
 

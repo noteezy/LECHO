@@ -5,6 +5,7 @@ using LECHO.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LECHO.Web.Controllers
@@ -113,6 +114,13 @@ namespace LECHO.Web.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize(Roles ="3")]
+        [HttpPost]
+        public void AddSubjectToFavourite(int SubjId)
+        {
+            subjectManagement.AddSubjectToFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
         }
     }
 }
