@@ -12,10 +12,10 @@ namespace LECHO.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly AccountManagement accountManagement;
-        private readonly SubjectManagement subjectManagement;
-        public LoginController(AccountManagement _accountManagement,
-                               SubjectManagement _subjectManagement)
+        private readonly IAccountManagement accountManagement;
+        private readonly ISubjectManagement subjectManagement;
+        public LoginController(IAccountManagement _accountManagement,
+                               ISubjectManagement _subjectManagement)
         {
             accountManagement = _accountManagement;
             subjectManagement = _subjectManagement;

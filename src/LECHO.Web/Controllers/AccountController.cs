@@ -16,10 +16,10 @@ namespace LECHO.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly AccountManagement accountManagement;
-        private readonly SubjectManagement subjectManagement;
-        public AccountController(AccountManagement _accountManagement,
-                                  SubjectManagement _subjectManagement)
+        private readonly IAccountManagement accountManagement;
+        private readonly ISubjectManagement subjectManagement;
+        public AccountController(IAccountManagement _accountManagement,
+                                  ISubjectManagement _subjectManagement)
         {
             accountManagement = _accountManagement;
             subjectManagement = _subjectManagement;

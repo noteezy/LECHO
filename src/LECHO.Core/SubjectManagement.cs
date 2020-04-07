@@ -4,7 +4,7 @@ using LECHO.Infrastructure;
 
 namespace LECHO.Core
 {
-    public class SubjectManagement
+    public class SubjectManagement:ISubjectManagement
     {
         private LECHOContext database;
         public SubjectManagement(LECHOContext dm)
