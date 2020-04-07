@@ -1,0 +1,61 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject SubjectManagement subjectManagement;
+@inject AccountManagement accountManagement;
+@model IEnumerable<LECHO.Infrastructure.Subjects>
+@{
+    ViewData["Title"] = "FavouriteFirstTerm";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+    else if (User.IsInRole("3"))
+    {
+        Layout = "_LayoutStudent";
+    }
+}
+
+@{
+    if (@ViewData["Information"].ToString() == String.Empty)
+    {
+        <div class="row subject-menu">
+            <ul class="redirectToTerms col-md-6">
+                <li class="redirectToFirst"><a href="../Subjects/FavouriteFirstTerm">Півріччя 1</a></li>
+                <li class="redirectToSecond"><a href="../Subjects/FavouriteSecondTerm">Півріччя 2</a></li>
+            </ul>
+            <form asp-controller="Subjects" asp-action="FavouriteFirstTerm" method="get" class="SearchBox col-md-6">
+                <p>
+                    <input type="text" name="Search" class="TextInput">
+                    <input class="SearchButton" type="submit" value="Filter" />
+                </p>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p class="SubjectsPageViewForOlderStudents">@ViewData["Information"]</p>
+    }
+}
+<div>
+    @foreach (var subject in Model)
+    {
+        Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
+        Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
+        <div class="subjects row">
+            <div class="col-md-1 all-subjects-fav-button"><input type="checkbox"></div>
+            <div class="col-md-7 all-subjects-info">
+                <h1><a href="../Subjects/SubjectsFirstTerm">@subject.Name</a></h1>
+                <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
+            </div>
+            <div class="col-md-4 all-subjects-lecture-info">
+                <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
+                <h6>@faculty.Name</h6>
+            </div>
+        </div>
+    }
+</div>
+
