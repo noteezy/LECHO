@@ -45,21 +45,21 @@ namespace LECHO.Web.Controllers
                         ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                     }
 
-                }
-                else
-                {
-                    subjectsList = new List<Subjects>()
-                    .Concat(subjectManagement.GetSubjects(3))
-                    .Concat(subjectManagement.GetSubjects(5))
-                    .ToArray();
-                }
-
-                if (!String.IsNullOrEmpty(Search))
-                {
-                    subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
-                }
-                return View(subjectsList);
             }
+            else
+            {
+                subjectsList = new List<Subjects>()
+                .Concat(subjectManagement.GetSubjects(3))
+                .Concat(subjectManagement.GetSubjects(5))
+                .ToArray();
+            }
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
+            }
+            return View(subjectsList);
+        }
 
         public ViewResult SubjectsSecondTerm(string Search)
         {
@@ -164,6 +164,13 @@ namespace LECHO.Web.Controllers
         public void AddSubjectToFavourite(int SubjId)
         {
             subjectManagement.AddSubjectToFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPost]
+        public void DeleteSubjectFromFavourite(int SubjId)
+        {
+            subjectManagement.DeleteSubjectFromFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
         }
     }
 }

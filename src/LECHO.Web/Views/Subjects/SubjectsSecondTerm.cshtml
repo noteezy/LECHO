@@ -27,7 +27,7 @@
         <div class="row subject-menu">
             <ul class="redirectToTerms col-md-6">
                 <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm">Півріччя 1</a></li>
-                <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+                <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm" style="text-decoration: underline;">Півріччя 2</a></li>
             </ul>
             <form asp-controller="Subjects" asp-action="SubjectsSecondTerm" method="get" class="SearchBox col-md-6">
                 <p>
@@ -52,12 +52,15 @@
         @{
             if (favourite == null)
             {
-                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)"></button></div>
+                <div class="col-md-1 all-subjects-fav-button">
+                    <button class="all-subjects-fav-button-add" onclick="add_to_favourite(this,@subject.SubjectId)"></button>
+                </div>
             }
             else
             {
-                
-                <div class="col-md-1 all-subjects-fav-button"><button onclick="add_to_favourite(@subject.SubjectId)" style="background-image:url(../img/bookmark_favourite.png);"></button></div>
+                <div class="col-md-1 all-subjects-fav-button">
+                    <button class="all-subjects-fav-button-delete" onclick="delete_from_favourite(this,@subject.SubjectId)"></button>
+                </div>
             }
         }
             <div class="col-md-7 all-subjects-info">
@@ -73,18 +76,46 @@
 </div>
 
 <script>
-    function add_to_favourite(id) {
+    function add_to_favourite(button,id) {
         $.ajax({
             url: "@Url.Action("AddSubjectToFavourite")",
             method: "POST",
             data: {
                 "SubjId": id,
             },
-            success:function() {
-                alert("Предмет додано у обране!");
+            success: function () {
+                $(button).removeClass('all-subjects-fav-button-add').addClass('all-subjects-fav-button-delete');
+                $(button).attr("onclick", "").click(function() {
+                  delete_from_favourite(button, id);
+                  return false;
+                });
+                //alert("Предмет додано у обране!");
             },
-            error:function(response){
-             alert(response);
+            error:function(){
+             alert("Не припустима дія");
+             }
+        });
+    }
+</script>
+
+<script>
+    function delete_from_favourite(button,id) {
+        $.ajax({
+            url: "@Url.Action("DeleteSubjectFromFavourite")",
+            method: "POST",
+            data: {
+                "SubjId": id,
+            },
+            success: function () {
+                $(button).removeClass('all-subjects-fav-button-delete').addClass('all-subjects-fav-button-add');
+                $(button).attr("onclick", "").click(function() {
+                  add_to_favourite(button, id);
+                  return false;
+                });
+                //alert("Предмет забрано з обраного!");
+            },
+            error:function(){
+             alert("Не припустима дія");
              }
         });
     }
