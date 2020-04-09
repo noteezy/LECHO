@@ -83,10 +83,7 @@
             },
             success: function () {
                 $(button).removeClass('all-subjects-fav-button-add').addClass('all-subjects-fav-button-delete');
-                $(button).attr("onclick", "").click(function() {
-                  delete_from_favourite(button, id);
-                  return false;
-                });
+                $(button).attr("onclick", "delete_from_favourite(this,"+id+")");
                 //alert("Предмет додано у обране!");
             },
             error:function(){
@@ -106,10 +103,7 @@
             },
             success: function () {
                 $(button).removeClass('all-subjects-fav-button-delete').addClass('all-subjects-fav-button-add');
-                $(button).attr("onclick", "").click(function() {
-                  add_to_favourite(button, id);
-                  return false;
-                });
+                $(button).attr("onclick", "add_to_favourite(this,"+id+")");
                 //alert("Предмет забрано з обраного!");
             },
             error:function(){
