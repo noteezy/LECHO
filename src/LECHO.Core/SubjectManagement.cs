@@ -49,6 +49,12 @@ namespace LECHO.Core
             database.Favourites.Add(new Favourites { UserId = _UserId, SubjectId = _SubjId });
             database.SaveChanges();
         }
+        public void DeleteSubjectFromFavourite(int _UserId, int _SubjId)
+        {
+            var favouriteToDelete = new Favourites { UserId = _UserId, SubjectId = _SubjId };
+            database.Remove(favouriteToDelete);
+            database.SaveChanges();
+        }
     }
 }
 
