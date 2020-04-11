@@ -30,7 +30,7 @@ namespace LECHO.Web
         {
             services.AddLogging(loggingBuilder =>
             {
-                loggingBuilder.AddSeq();
+                loggingBuilder.AddSeq(Configuration.GetSection("Seq"));
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
