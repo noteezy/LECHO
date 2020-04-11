@@ -153,7 +153,7 @@ namespace LECHO.Web.Controllers
         }
 
 
-        // GET: /<controller>/
+        [ResponseCache(NoStore =true, Location =ResponseCacheLocation.None)]
         public IActionResult Index()
         {
             return View();

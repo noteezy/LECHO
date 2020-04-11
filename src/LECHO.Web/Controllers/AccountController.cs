@@ -17,26 +17,18 @@ namespace LECHO.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountManagement accountManagement;
-        private readonly ISubjectManagement subjectManagement;
-        public AccountController(IAccountManagement _accountManagement,
-                                  ISubjectManagement _subjectManagement)
+        public AccountController(IAccountManagement _accountManagement)
         {
             accountManagement = _accountManagement;
-            subjectManagement = _subjectManagement;
         }
         [Authorize]
         public IActionResult Profile()
         {
-            var map = new Dictionary<string, string>();
-            map.Add("1", "Адмін");
-            map.Add("2", "Викладач");
-            map.Add("3", "Студент");
-
             var user = accountManagement.GetUser(User.Identity.Name);
             ViewData["FirstName"] = user.FirstName;
             ViewData["LastName"] = user.LastName;
             ViewData["MiddleName"] = user.MiddleName;
-            ViewData["Role"] = map[user.Role.ToString()];
+            ViewData["Role"] = accountManagement.GetRoleName(user.Role);
             return View();
         }
         public async Task<IActionResult> Logout()
