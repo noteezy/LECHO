@@ -1,0 +1,114 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject ISubjectManagement subjectManagement;
+@inject IAccountManagement accountManagement;
+@model IEnumerable<LECHO.Infrastructure.Subjects>
+@{
+    ViewData["Title"] = "Subjects";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+    else if (User.IsInRole("3"))
+    {
+        Layout = "_LayoutStudent";
+    }
+}
+
+@{
+    if (@ViewData["Information"].ToString() == String.Empty)
+    {
+        <div class="row subject-menu">
+            <ul class="redirectToTerms col-md-6">
+                <li class="redirectToFirst"><a href="../Subjects/SubjectsFirstTerm" style="text-decoration: underline;">Півріччя 1</a></li>
+                <li class="redirectToSecond"><a href="../Subjects/SubjectsSecondTerm">Півріччя 2</a></li>
+            </ul>
+            <form asp-controller="Subjects" asp-action="SubjectsFirstTerm" method="get" class="SearchBox col-md-6">
+                <p>
+                    <input type="text" name="Search" class="TextInput">
+                    <input class="SearchButton" type="submit" value="Filter" />
+                </p>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p class="SubjectsPageViewForOlderStudents">@ViewData["Information"]</p>
+    }
+}
+<div>
+    @foreach (var subject in Model)
+    {
+        Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
+        Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
+        Favourites favourite = subjectManagement.GetFavourite(subject.SubjectId);
+        <div class="subjects row">
+            @{
+                if (favourite == null)
+                {
+                    <div class="col-md-1 all-subjects-fav-button">
+                        <button class="all-subjects-fav-button-add" onclick="add_to_favourite(this,@subject.SubjectId)"></button>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-1 all-subjects-fav-button">
+                        <button class="all-subjects-fav-button-delete" onclick="delete_from_favourite(this,@subject.SubjectId)"></button>
+                    </div>
+                }
+            }
+            <div class="col-md-7 all-subjects-info">
+                <h1><a href="../Subjects/FavouriteFirstTerm">@subject.Name</a></h1>
+                <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
+            </div>
+            <div class="col-md-4 all-subjects-lecture-info">
+                <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
+                <h6>@faculty.Name</h6>
+            </div>
+        </div>
+     }
+</div>
+
+<script>
+    function add_to_favourite(button,id) {
+        $.ajax({
+            url: "@Url.Action("AddSubjectToFavourite")",
+            method: "POST",
+            data: {
+                "SubjId": id,
+            },
+            success: function () {
+                $(button).removeClass('all-subjects-fav-button-add').addClass('all-subjects-fav-button-delete');
+                $(button).attr("onclick", "delete_from_favourite(this,"+id+")");
+                //alert("Предмет додано у обране!");
+            },
+            error:function(){
+             alert("Не припустима дія");
+             }
+        });
+    }
+</script>
+
+<script>
+    function delete_from_favourite(button,id) {
+        $.ajax({
+            url: "@Url.Action("DeleteSubjectFromFavourite")",
+            method: "POST",
+            data: {
+                "SubjId": id,
+            },
+            success: function () {
+                $(button).removeClass('all-subjects-fav-button-delete').addClass('all-subjects-fav-button-add');
+                $(button).attr("onclick", "add_to_favourite(this,"+id+")");
+                //alert("Предмет забрано з обраного!");
+            },
+            error:function(){
+             alert("Не припустима дія");
+             }
+        });
+    }
+</script>

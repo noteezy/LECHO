@@ -2,13 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LECHO.Core;
+using LECHO.Infrastructure;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace LECHO.Web
 {
@@ -31,6 +36,9 @@ namespace LECHO.Web
                     options.ExpireTimeSpan = TimeSpan.FromDays(1);
                 });
             services.AddControllersWithViews();
+            services.AddDbContext<LECHOContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
+            services.AddScoped<IAccountManagement, AccountManagement>();
+            services.AddScoped<ISubjectManagement, SubjectManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +56,8 @@ namespace LECHO.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 

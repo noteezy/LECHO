@@ -5,6 +5,8 @@ using LECHO.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+using Microsoft.Extensions.Logging;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LECHO.Web.Controllers
@@ -12,55 +14,171 @@ namespace LECHO.Web.Controllers
     [Authorize]
     public class SubjectsController : Controller
     {
-        [Authorize]
-        public ViewResult Subjects()
+        private readonly IAccountManagement accountManagement;
+        private readonly ISubjectManagement subjectManagement;
+        private readonly ILogger<SubjectsController> logger;
+        public SubjectsController(IAccountManagement _accountManagement,
+                                 ISubjectManagement _subjectManagement,
+                                 ILogger<SubjectsController> _logger)
         {
-            var map = new Dictionary<string, string>();
-            map.Add("1", "Адмін");
-            map.Add("2", "Викладач");
-            map.Add("3", "Студент");
-            var user = AccountManagement.GetUser(User.Identity.Name);
+            accountManagement = _accountManagement;
+            subjectManagement = _subjectManagement;
+            logger = _logger;
+        }
+        [Authorize]
+
+        public ViewResult SubjectsFirstTerm(string Search)
+        {
+            var user = accountManagement.GetUser(User.Identity.Name);
             Subjects[] subjectsList;
             ViewData["Information"] = "";
             if (user.Role == 3)
             {
-                var student = AccountManagement.GetStudent(user.UserId);
-                if (student.Course == 1) 
-                {
-                    subjectsList = new List<Subjects>()
-                    .Concat(SubjectManagement.GetSubjects(3))
-                    .Concat(SubjectManagement.GetSubjects(4))
-                    .ToArray(); 
-                }
-                else if (student.Course == 2) 
-                {
-                    subjectsList = new List<Subjects>()
-                    .Concat(SubjectManagement.GetSubjects(5))
-                    .Concat(SubjectManagement.GetSubjects(6))
-                    .ToArray();
-                } 
-                else 
-                {
-                    subjectsList = SubjectManagement.GetSubjects(1);
-                    ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
-                }
-                
-            } 
-            else 
+                    var student = accountManagement.GetStudent(user.UserId);
+                    if (student.Course == 1)
+                    {
+                        subjectsList = subjectManagement.GetSubjects(3);
+                    }
+                    else if (student.Course == 2)
+                    {
+                        subjectsList = subjectManagement.GetSubjects(5);
+                    }
+                    else
+                    {
+                        subjectsList = subjectManagement.GetSubjects(1);
+                        ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
+                    }
+
+            }
+            else
             {
                 subjectsList = new List<Subjects>()
-                .Concat(SubjectManagement.GetSubjects(3))
-                .Concat(SubjectManagement.GetSubjects(4))
-                .Concat(SubjectManagement.GetSubjects(5))
-                .Concat(SubjectManagement.GetSubjects(6))
+                .Concat(subjectManagement.GetSubjects(3))
+                .Concat(subjectManagement.GetSubjects(5))
                 .ToArray();
+            }
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
             }
             return View(subjectsList);
         }
-        // GET: /<controller>/
+
+        public ViewResult SubjectsSecondTerm(string Search)
+        {
+            var user = accountManagement.GetUser(User.Identity.Name);
+            Subjects[] subjectsList;
+            ViewData["Information"] = "";
+            if (user.Role == 3)
+            {
+                var student = accountManagement.GetStudent(user.UserId);
+                if (student.Course == 1)
+                {
+                    subjectsList = subjectManagement.GetSubjects(4);
+                }
+                else if (student.Course == 2)
+                {
+                    subjectsList =  subjectManagement.GetSubjects(6);
+                }
+                else
+                {
+                    subjectsList =  subjectManagement.GetSubjects(1);
+                    ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
+                }
+
+            }
+            else
+            {
+                subjectsList = new List<Subjects>()
+                .Concat(subjectManagement.GetSubjects(4))
+                .Concat(subjectManagement.GetSubjects(6))
+                .ToArray();
+            }
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
+            }
+            return View(subjectsList);
+        }
+
+        public ViewResult FavouriteFirstTerm(string Search)
+        {
+            var user = accountManagement.GetUser(User.Identity.Name);
+            Subjects[] subjectsList;
+            ViewData["Information"] = "";
+            var student = accountManagement.GetStudent(user.UserId);
+            if (student.Course == 1)
+            {
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 3);
+            }
+            else
+            {
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5); 
+            }
+
+            if(subjectsList.Length == 0)
+            {
+                ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
+            }
+            
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
+            }
+            return View(subjectsList);
+        }
+
+        public ViewResult FavouriteSecondTerm(string Search)
+        {
+            var user = accountManagement.GetUser(User.Identity.Name);
+            Subjects[] subjectsList;
+            ViewData["Information"] = "";
+            var student = accountManagement.GetStudent(user.UserId);
+            if (student.Course == 1)
+            {
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 4);
+            }
+            else
+            {
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 6);
+            }
+            if (subjectsList.Length == 0)
+            {
+                ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
+            }
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
+            }
+            return View(subjectsList);
+        }
+
+
+        [ResponseCache(NoStore =true, Location =ResponseCacheLocation.None)]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize(Roles ="3")]
+        [HttpPost]
+        public void AddSubjectToFavourite(int SubjId)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.AddSubjectToFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User} has added subject with id {Id} to favourites", user, SubjId);
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPost]
+        public void DeleteSubjectFromFavourite(int SubjId)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.DeleteSubjectFromFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
         }
     }
 }

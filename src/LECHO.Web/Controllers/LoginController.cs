@@ -7,11 +7,20 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace LECHO.Web.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IAccountManagement accountManagement;
+        private readonly ILogger<LoginController> logger;
+        public LoginController(IAccountManagement _accountManagement,
+                                ILogger<LoginController> _logger)
+        {
+            logger = _logger;
+            accountManagement = _accountManagement;
+        }
         public ActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -35,18 +44,22 @@ namespace LECHO.Web.Controllers
                 return RedirectToAction("Profile", "Account");
             try
             {
-                if (AccountManagement.Verify(user.Login, user.Password))
+                if (accountManagement.Verify(user.Login, user.Password))
                 {
-                    await Authenticate(AccountManagement.GetUser(user.Login));
+                    Users u = accountManagement.GetUser(user.Login);
+                    await Authenticate(u);
+                    logger.LogInformation("{@User} has authorized",u);
                     return RedirectToAction("Profile", "Account");
                 }
                 else
                 {
+                    logger.LogWarning("{User} has failed to Authorize with {Password}", user.Login, user.Password);
                     return View("Error");
                 }
             }
             catch (System.Exception)
             {
+                logger.LogWarning("Failed attempt to Authorize with {Login} and {Password}", user.Login, user.Password);
                 return View("Error");
             }  
         }
