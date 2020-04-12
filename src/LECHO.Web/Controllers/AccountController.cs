@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+using Serilog;
 using Microsoft.Extensions.Logging;
 
 namespace LECHO.Web.Controllers

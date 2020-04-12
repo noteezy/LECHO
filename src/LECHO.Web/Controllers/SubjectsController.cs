@@ -169,7 +169,7 @@ namespace LECHO.Web.Controllers
         {
             Users user = accountManagement.GetUser(User.Identity.Name);
             subjectManagement.AddSubjectToFavourite(user.UserId, SubjId);
-            logger.LogInformation("{@User has added subject with id {Id} to favourites", user, SubjId);
+            logger.LogInformation("{@User} has added subject with id {Id} to favourites", user, SubjId);
         }
 
         [Authorize(Roles = "3")]
@@ -178,7 +178,7 @@ namespace LECHO.Web.Controllers
         {
             Users user = accountManagement.GetUser(User.Identity.Name);
             subjectManagement.DeleteSubjectFromFavourite(user.UserId, SubjId);
-            logger.LogInformation("{@User has deleted subject with id {Id} from favourites", user, SubjId);
+            logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
         }
     }
 }
