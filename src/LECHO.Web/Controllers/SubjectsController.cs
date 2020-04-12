@@ -172,5 +172,28 @@ namespace LECHO.Web.Controllers
         {
             subjectManagement.DeleteSubjectFromFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
         }
+
+        public IActionResult SubjectInfo(int id)
+        {
+            try
+            {
+                var subject = subjectManagement.GetSingleSubjectById(id);
+                ViewData["SubjectName"] = subject.Name;
+                ViewData["NumberOfStudents"] = subject.NumberOfStudents;
+                ViewData["MaxNumberOfStudents"] = subject.MaxNumberOfStudents;
+                ViewData["Description"] = subject.Description;
+                var lecturer = accountManagement.GetLecturer(subject.LecturerId);
+                ViewData["LecturerName"] = lecturer.LastName + " " + lecturer.FirstName[0] + ". " + lecturer.MiddleName[0] + ".";
+                var faculty = subjectManagement.GetFaculty(subject.FacultyId);
+                ViewData["FacultyName"] = faculty.Name;
+                ViewData["FacultyMapLocationX"] = faculty.MapLocationX;
+                ViewData["FacultyMapLocationY"] = faculty.MapLocationY;
+            }
+            catch (System.Exception)
+            {
+                return View("Error");
+            }
+            return View();
+        }
     }
 }
