@@ -5,6 +5,7 @@ using LECHO.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,11 +16,14 @@ namespace LECHO.Web.Controllers
     {
         private readonly IAccountManagement accountManagement;
         private readonly ISubjectManagement subjectManagement;
+        private readonly ILogger<SubjectsController> logger;
         public SubjectsController(IAccountManagement _accountManagement,
-                                 ISubjectManagement _subjectManagement)
+                                 ISubjectManagement _subjectManagement,
+                                 ILogger<SubjectsController> _logger)
         {
             accountManagement = _accountManagement;
             subjectManagement = _subjectManagement;
+            logger = _logger;
         }
         [Authorize]
 
@@ -163,14 +167,18 @@ namespace LECHO.Web.Controllers
         [HttpPost]
         public void AddSubjectToFavourite(int SubjId)
         {
-            subjectManagement.AddSubjectToFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.AddSubjectToFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User has added subject with id {Id} to favourites", user, SubjId);
         }
 
         [Authorize(Roles = "3")]
         [HttpPost]
         public void DeleteSubjectFromFavourite(int SubjId)
         {
-            subjectManagement.DeleteSubjectFromFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.DeleteSubjectFromFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User has deleted subject with id {Id} from favourites", user, SubjId);
         }
     }
 }

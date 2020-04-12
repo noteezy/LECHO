@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
-
+using Microsoft.Extensions.Logging;
 
 namespace LECHO.Web.Controllers
 {
@@ -17,9 +17,12 @@ namespace LECHO.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountManagement accountManagement;
-        public AccountController(IAccountManagement _accountManagement)
+        private readonly ILogger<AccountController> logger;
+        public AccountController(IAccountManagement _accountManagement,
+                                 ILogger<AccountController> _logger)
         {
             accountManagement = _accountManagement;
+            logger = _logger;
         }
         [Authorize]
         public IActionResult Profile()
@@ -33,6 +36,7 @@ namespace LECHO.Web.Controllers
         }
         public async Task<IActionResult> Logout()
         {
+            logger.LogInformation("{User} logged out", User.Identity.Name);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login");
         }
