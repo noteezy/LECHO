@@ -5,6 +5,7 @@ namespace LECHO.Core
     public interface ISubjectManagement
     {
         Faculties GetFaculty(int id);
+        Subjects GetSingleSubjectById(int id);
         Favourites GetFavourite(int id);
         Subjects[] GetSubjects(int semester);
         Subjects[] GetSubjects(string title);

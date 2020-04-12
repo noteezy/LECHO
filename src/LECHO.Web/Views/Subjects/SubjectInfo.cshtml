@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Subject";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+    else if (User.IsInRole("3"))
+    {
+        Layout = "_LayoutStudent";
+    }
+}
+
+
+<div class="single-subject">
+    <div class="single-subject-header row">
+        <div class="col-md-7 single-subject-info">
+            <h1>@ViewData["SubjectName"]</h1>
+            <p>Кількість студентів, які обрали дисципліну: @ViewData["NumberOfStudents"]/@ViewData["MaxNumberOfStudents"]</p>
+        </div>
+        <div class="col-md-5 single-subject-lecturer">
+            <h1>@ViewData["LecturerName"]</h1>
+            <h6>@ViewData["FacultyName"]</h6>
+        </div>
+    </div>
+    <div class="single-subject-info">
+        <div class="row">
+            <h1>Опис:</h1>
+        </div>
+        <div class="row">
+            <p>@ViewData["Description"]</p>
+        </div>
+        <div class="row">
+            <h1>Розташування факультету:</h1>
+            <div id="FacultyMap"></div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<script>
+    function initMap() {
+        var uluru = { lat: @ViewData["FacultyMapLocationX"], lng: @ViewData["FacultyMapLocationY"] };
+        var map = new google.maps.Map(
+            document.getElementById('FacultyMap'), { zoom: 18, center: uluru });
+        var marker = new google.maps.Marker({ position: uluru, map: map });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+</script>
