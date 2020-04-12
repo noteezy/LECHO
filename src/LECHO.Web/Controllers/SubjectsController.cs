@@ -5,6 +5,7 @@ using LECHO.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -186,8 +187,8 @@ namespace LECHO.Web.Controllers
                 ViewData["LecturerName"] = lecturer.LastName + " " + lecturer.FirstName[0] + ". " + lecturer.MiddleName[0] + ".";
                 var faculty = subjectManagement.GetFaculty(subject.FacultyId);
                 ViewData["FacultyName"] = faculty.Name;
-                ViewData["FacultyMapLocationX"] = faculty.MapLocationX;
-                ViewData["FacultyMapLocationY"] = faculty.MapLocationY;
+                ViewData["FacultyMapLocationX"] = faculty.MapLocationX.ToString("G",CultureInfo.InvariantCulture);
+                ViewData["FacultyMapLocationY"] = faculty.MapLocationY.ToString("G", CultureInfo.InvariantCulture);
             }
             catch (System.Exception)
             {
