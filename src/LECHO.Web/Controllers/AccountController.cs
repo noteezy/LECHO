@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
-
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace LECHO.Web.Controllers
 {
@@ -17,30 +18,26 @@ namespace LECHO.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountManagement accountManagement;
-        private readonly ISubjectManagement subjectManagement;
+        private readonly ILogger<AccountController> logger;
         public AccountController(IAccountManagement _accountManagement,
-                                  ISubjectManagement _subjectManagement)
+                                 ILogger<AccountController> _logger)
         {
             accountManagement = _accountManagement;
-            subjectManagement = _subjectManagement;
+            logger = _logger;
         }
         [Authorize]
         public IActionResult Profile()
         {
-            var map = new Dictionary<string, string>();
-            map.Add("1", "Адмін");
-            map.Add("2", "Викладач");
-            map.Add("3", "Студент");
-
             var user = accountManagement.GetUser(User.Identity.Name);
             ViewData["FirstName"] = user.FirstName;
             ViewData["LastName"] = user.LastName;
             ViewData["MiddleName"] = user.MiddleName;
-            ViewData["Role"] = map[user.Role.ToString()];
+            ViewData["Role"] = accountManagement.GetRoleName(user.Role);
             return View();
         }
         public async Task<IActionResult> Logout()
         {
+            logger.LogInformation("{User} logged out", User.Identity.Name);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login");
         }
