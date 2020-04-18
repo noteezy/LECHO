@@ -59,6 +59,18 @@ namespace LECHO.Core
             database.Remove(favouriteToDelete);
             database.SaveChanges();
         }
+        public void MakeFinalSubjectChoice(int _UserId, int _SubjId)
+        {
+            var subjectToAdd = database.Subjects.FirstOrDefault(c => c.SubjectId == _SubjId);
+            var choices = database.Choices.Where(c => c.UserId==_UserId).ToArray();
+            foreach(Choices chs in choices)
+            {
+                var sbj = database.Subjects.FirstOrDefault(c => c.SubjectId == chs.SubjectId);
+                if(sbj.Semester == subjectToAdd.Semester) database.Remove(chs);
+            }
+            database.Choices.Add(new Choices { UserId = _UserId, SubjectId = _SubjId });
+            database.SaveChanges();
+        }
     }
 }
 
