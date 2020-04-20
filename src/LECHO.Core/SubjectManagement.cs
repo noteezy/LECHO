@@ -41,20 +41,10 @@ namespace LECHO.Core
         public Subjects[] GetFavouriteSubjects(int _UserId, int semester)
         {
             var subjectsList = database.Subjects
-                .Where(s => (database.Favourites.Where(f => f.UserId == _UserId)
+                .Where(s => (database.Favourites.Where(f=>f.UserId==_UserId)
                 .Any(f => f.SubjectId == s.SubjectId)))
-                .Where(s => s.Semester == semester)
-                .Select(s => s)
-                .ToArray();
-            return subjectsList;
-        }
-        public Subjects[] GetStudentsFinalChoice(int _UserId)
-        {
-            var subjectsList = database.Subjects
-                .Where(s => (database.Choices.Where(f => f.UserId == _UserId)
-                .Any(f => f.SubjectId == s.SubjectId)))
-                .OrderBy(s => s.Semester)
-                .Select(s => s)
+                .Where(s=>s.Semester==semester)
+                .Select(s=>s)
                 .ToArray();
             return subjectsList;
         }
