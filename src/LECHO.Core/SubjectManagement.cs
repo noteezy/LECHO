@@ -4,7 +4,7 @@ using LECHO.Infrastructure;
 
 namespace LECHO.Core
 {
-    public class SubjectManagement
+    public class SubjectManagement : ISubjectManagement
     {
         private LECHOContext database;
         public SubjectManagement(LECHOContext dm)
@@ -16,17 +16,21 @@ namespace LECHO.Core
             var faculty = database.Faculties.FirstOrDefault(u => u.FacultyId == id);
             return faculty;
         }
-
+        public Subjects GetSingleSubjectById(int id)
+        {
+            var subject = database.Subjects.FirstOrDefault(s => s.SubjectId == id);
+            return subject;
+        }
         public Favourites GetFavourite(int id)
         {
             var subject = database.Favourites.FirstOrDefault(u => u.SubjectId == id);
             return subject;
         }
         public Subjects[] GetSubjects(int semester)
-                {
-                    var subject = database.Subjects.ToArray().Where(s => s.Semester == semester).Select(s => s).ToArray();
-                    return subject;
-                }
+        {
+            var subject = database.Subjects.ToArray().Where(s => s.Semester == semester).Select(s => s).ToArray();
+            return subject;
+        }
         public Subjects[] GetSubjects(string title) { return null; }
         public Subjects[] GetSubjectsByTitle(string title, Subjects[] subjects)
         {
@@ -36,32 +40,50 @@ namespace LECHO.Core
         }
         public Subjects[] GetFavouriteSubjects(int _UserId, int semester)
         {
-            var subjectsList = database.Favourites.ToArray().Where(u => u.UserId == _UserId).Select(u => u).ToArray();
-            Subjects[] subject = new Subjects[subjectsList.Length];
-            var length = 0;
-            for (int i = 0; i < subjectsList.Length; i++)
-            {
-                subject[i] = (database.Subjects.FirstOrDefault(u => u.SubjectId == subjectsList[i].SubjectId));
-                if (subject[i].Semester == semester)
-                {
-                    length++;
-                }
-            }
-            Subjects[] result = new Subjects[length];
-            var count = 0;
-            for (int i = 0; i < subject.Length; i++)
-            {
-                if(subject[i].Semester == semester)
-                {
-                    result[count] = subject[i];
-                    count++;
-                }
-            }
-            return result;
+            var subjectsList = database.Subjects
+                .Where(s => (database.Favourites.Where(f => f.UserId == _UserId)
+                .Any(f => f.SubjectId == s.SubjectId)))
+                .Where(s => s.Semester == semester)
+                .Select(s => s)
+                .ToArray();
+            return subjectsList;
+        }
+        public Subjects[] GetStudentsFinalChoice(int _UserId)
+        {
+            var subjectsList = database.Subjects
+                .Where(s => (database.Choices.Where(f => f.UserId == _UserId)
+                .Any(f => f.SubjectId == s.SubjectId)))
+                .OrderBy(s => s.Semester)
+                .Select(s => s)
+                .ToArray();
+            return subjectsList;
         }
         public void AddSubjectToFavourite(int _UserId, int _SubjId)
         {
             database.Favourites.Add(new Favourites { UserId = _UserId, SubjectId = _SubjId });
+            database.SaveChanges();
+        }
+        public void DeleteSubjectFromFavourite(int _UserId, int _SubjId)
+        {
+            var favouriteToDelete = new Favourites { UserId = _UserId, SubjectId = _SubjId };
+            database.Remove(favouriteToDelete);
+            database.SaveChanges();
+        }
+        public void MakeFinalSubjectChoice(int _UserId, int _SubjId)
+        {
+            var subjectToAdd = database.Subjects.FirstOrDefault(c => c.SubjectId == _SubjId);
+            var choices = database.Choices.Where(c => c.UserId==_UserId).ToArray();
+            foreach(Choices chs in choices)
+            {
+                var sbj = database.Subjects.FirstOrDefault(c => c.SubjectId == chs.SubjectId);
+                if (sbj.Semester == subjectToAdd.Semester)
+                {
+                    sbj.NumberOfStudents = sbj.NumberOfStudents - 1;
+                    database.Remove(chs);
+                }
+            }
+            subjectToAdd.NumberOfStudents = subjectToAdd.NumberOfStudents + 1;
+            database.Choices.Add(new Choices { UserId = _UserId, SubjectId = _SubjId });
             database.SaveChanges();
         }
     }

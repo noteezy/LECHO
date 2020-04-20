@@ -3,7 +3,7 @@ using System.Linq;
 using LECHO.Infrastructure;
 namespace LECHO.Core
 {
-    public class AccountManagement
+    public class AccountManagement:IAccountManagement
     {
         public class UserNotFoundException : Exception
         {
@@ -20,7 +20,18 @@ namespace LECHO.Core
         {
             database = dm;
         }
-
+        public string GetRoleName(int roleValue)
+        {
+            switch (roleValue)
+            {
+                case 1:
+                    return "Адмін";
+                case 2:
+                    return "Викладач";
+                default:
+                    return "Студент";
+            }
+        }
         public Users GetUser(string username)
         {
             var user = database.Users.FirstOrDefault(u => u.Login == username);

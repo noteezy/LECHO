@@ -10,7 +10,15 @@
 *.user
 *.sln.docstates
 *.cache
+*.dtbcache
+*.ide
+*.ide-shm
+*.ide-wal
 
 # Build results
 [Dd]ebug/
 [Rr]elease/
+*.vs/
+*.ide-wal
+*.ide
+*.ide-shm

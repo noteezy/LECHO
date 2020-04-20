@@ -5,6 +5,8 @@ using LECHO.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
+using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,16 +15,19 @@ namespace LECHO.Web.Controllers
     [Authorize]
     public class SubjectsController : Controller
     {
-        private readonly AccountManagement accountManagement;
-        private readonly SubjectManagement subjectManagement;
-        public SubjectsController(AccountManagement _accountManagement,
-                                 SubjectManagement _subjectManagement)
+        private readonly IAccountManagement accountManagement;
+        private readonly ISubjectManagement subjectManagement;
+        private readonly ILogger<SubjectsController> logger;
+        public SubjectsController(IAccountManagement _accountManagement,
+                                 ISubjectManagement _subjectManagement,
+                                 ILogger<SubjectsController> _logger)
         {
             accountManagement = _accountManagement;
             subjectManagement = _subjectManagement;
+            logger = _logger;
         }
-        [Authorize]
 
+        [Authorize]
         public ViewResult SubjectsFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -44,15 +49,14 @@ namespace LECHO.Web.Controllers
                         subjectsList = subjectManagement.GetSubjects(1);
                         ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                     }
-
-                }
-                else
-                {
-                    subjectsList = new List<Subjects>()
-                    .Concat(subjectManagement.GetSubjects(3))
-                    .Concat(subjectManagement.GetSubjects(5))
-                    .ToArray();
-                }
+            }
+            else
+            {
+                subjectsList = new List<Subjects>()
+                .Concat(subjectManagement.GetSubjects(3))
+                .Concat(subjectManagement.GetSubjects(5))
+                .ToArray();
+            }
 
                 if (!String.IsNullOrEmpty(Search))
                 {
@@ -61,6 +65,7 @@ namespace LECHO.Web.Controllers
                 return View(subjectsList);
             }
 
+        [Authorize]
         public ViewResult SubjectsSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -99,6 +104,7 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
+        [Authorize]
         public ViewResult FavouriteFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -118,7 +124,6 @@ namespace LECHO.Web.Controllers
             {
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
-            
 
             if (!String.IsNullOrEmpty(Search))
             {
@@ -127,6 +132,7 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
+        [Authorize]
         public ViewResult FavouriteSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -151,9 +157,7 @@ namespace LECHO.Web.Controllers
             }
             return View(subjectsList);
         }
-
-
-        // GET: /<controller>/
+        [ResponseCache(NoStore =true, Location =ResponseCacheLocation.None)]
         public IActionResult Index()
         {
             return View();
@@ -163,7 +167,50 @@ namespace LECHO.Web.Controllers
         [HttpPost]
         public void AddSubjectToFavourite(int SubjId)
         {
-            subjectManagement.AddSubjectToFavourite(accountManagement.GetUser(User.Identity.Name).UserId, SubjId);
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.AddSubjectToFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User} has added subject with id {Id} to favourites", user, SubjId);
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPost]
+        public void DeleteSubjectFromFavourite(int SubjId)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.DeleteSubjectFromFavourite(user.UserId, SubjId);
+            logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
+        }
+
+        [Authorize]
+        public IActionResult SubjectInfo(int id)
+        {
+            try
+            {
+                var subject = subjectManagement.GetSingleSubjectById(id);
+                ViewData["SubjectName"] = subject.Name;
+                ViewData["NumberOfStudents"] = subject.NumberOfStudents;
+                ViewData["MaxNumberOfStudents"] = subject.MaxNumberOfStudents;
+                ViewData["Description"] = subject.Description;
+                var lecturer = accountManagement.GetLecturer(subject.LecturerId);
+                ViewData["LecturerName"] = lecturer.LastName + " " + lecturer.FirstName[0] + ". " + lecturer.MiddleName[0] + ".";
+                var faculty = subjectManagement.GetFaculty(subject.FacultyId);
+                ViewData["FacultyName"] = faculty.Name;
+                ViewData["FacultyMapLocationX"] = faculty.MapLocationX.ToString("G",CultureInfo.InvariantCulture);
+                ViewData["FacultyMapLocationY"] = faculty.MapLocationY.ToString("G", CultureInfo.InvariantCulture);
+            }
+            catch (System.Exception)
+            {
+                return View("Error");
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "3")]
+        public void MakeFinalSubjectChoice(int SubjId)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.MakeFinalSubjectChoice(user.UserId, SubjId);
+            logger.LogInformation("{@User} has made final choice - subject with id {Id} choosen", user, SubjId);
         }
     }
 }

@@ -7,46 +7,60 @@ using LECHO.Infrastructure;
 using Xunit;
 using Microsoft.AspNetCore.Http;
 using LECHO.Core;
+using Microsoft.Extensions.Logging;
 
 namespace Tests
 {
-    
+
     public class AccountControllerTests
     {
         [Fact]
         public void TestProfileViewData()
         {
-            
-            Users testuser = new Users { FirstName = "TestUserFirstname", MiddleName = "testcUsetMiddleame", LastName = "testUserLastname" };
-            var accmock = new Mock<AccountManagement>();
+            Users testuser = new Users { FirstName = "testUserFirstname",
+                MiddleName = "testUserMiddlename",
+                LastName = "testUserLastname",
+                Role = 1};
+            var accmock = new Mock<IAccountManagement>();
+            var sbjmock = new Mock<ISubjectManagement>();
+            var logmock = new Mock<ILogger<AccountController>>();
             accmock.Setup(a => a.GetUser(It.IsAny<string>())).Returns(testuser);
-            var subjMoc = new Mock<SubjectManagement>();
-            AccountController controller = new AccountController(accmock.Object,subjMoc.Object);
+            var subjMoc = new Mock<ISubjectManagement>();
+            AccountController controller = new AccountController(accmock.Object,sbjmock.Object,logmock.Object);
             var mock = new Mock<HttpContext>();
-            mock.Setup(x => x.User.Identity.IsAuthenticated).Returns(true);
-            mock.Setup(x => x.User.Identity.Name).Returns(It.IsAny<string>().ToString());
+            mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
+            mock.SetupGet(x => x.User.Identity.Name).Returns("sdjsl");
             controller.ControllerContext.HttpContext = mock.Object;
- 
-            var result = controller.Profile() as ViewResult;
-            
-            Assert.NotNull(result.ViewData["FirstName"]);
-            Assert.NotNull(result.ViewData["MiddleName"]);
+
+            Assert.NotNull((controller.Profile() as ViewResult).ViewData["FirstName"]);
+            Assert.NotNull((controller.Profile() as ViewResult).ViewData["MiddleName"]);
+            Assert.NotNull((controller.Profile() as ViewResult).ViewData["LastName"]);
+            Assert.Equal(testuser.FirstName, (controller.Profile() as ViewResult).ViewData["FirstName"]);
+            Assert.Equal(testuser.MiddleName, (controller.Profile() as ViewResult).ViewData["MiddleName"]);
+            Assert.Equal(testuser.LastName, (controller.Profile() as ViewResult).ViewData["LastName"]);
         }
 
         [Fact]
         public void ProfileViewResultNotNullTest()
         {
-            var accmock = new Mock<AccountManagement>();
-            Users testuser = new Users { FirstName = "TestUserFirstname", MiddleName = "testcUsetMiddleame", LastName = "testUserLastname" };
-            accmock.SetupGet(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
-            var subjMoc = new Mock<SubjectManagement>();
-            AccountController controller = new AccountController(accmock.Object, subjMoc.Object);
+            Users testuser = new Users
+            {
+                FirstName = "TestUserFirstname",
+                MiddleName = "testUserMiddlename",
+                LastName = "testUserLastname",
+                Role = 1
+            };
+            var accmock = new Mock<IAccountManagement>();
+            accmock.Setup(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
+            var sbjmock = new Mock<ISubjectManagement>();
+            var logmock = new Mock<ILogger<AccountController>>();
+            AccountController controller = new AccountController(accmock.Object, sbjmock.Object, logmock.Object);
             var mock = new Mock<HttpContext>();
-            mock.Setup(x => x.User.Identity.IsAuthenticated).Returns(true);
+            mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
             controller.ControllerContext.HttpContext = mock.Object;
-            
+
             var result = controller.Profile() as ViewResult;
-            
+
             Assert.NotNull(result);
         }
     }

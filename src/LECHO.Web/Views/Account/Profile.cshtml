@@ -1,4 +1,8 @@
-﻿@{
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject IAccountManagement accountManagement;
+@inject ISubjectManagement subjectManagement;
+@{
     ViewData["Title"] = "Profile";
     if (User.IsInRole("1"))
     {
@@ -22,3 +26,20 @@
     <h2>Ім'я: @ViewData["FirstName"]</h2>
     <h2>По-батькові: @ViewData["MiddleName"]</h2>
 </div>
+
+@foreach (var subject in Model)
+{
+    Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
+    Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
+    <p>Для @subject.Semester семестру:</p>
+    <div class="subjects row">
+        <div class="col-md-8 all-subjects-info">
+            <h1><a asp-controller="Subjects" asp-action="SubjectInfo" asp-route-id="@subject.SubjectId">@subject.Name</a></h1>
+            <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
+        </div>
+        <div class="col-md-4 all-subjects-lecture-info">
+            <h1>@lecturer.LastName @lecturer.FirstName[0]. @lecturer.MiddleName[0].</h1>
+            <h6>@faculty.Name</h6>
+        </div>
+    </div>
+}
