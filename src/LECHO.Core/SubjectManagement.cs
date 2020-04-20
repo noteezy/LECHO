@@ -48,6 +48,16 @@ namespace LECHO.Core
                 .ToArray();
             return subjectsList;
         }
+        public Subjects[] GetStudentsFinalChoice(int _UserId)
+        {
+            var subjectsList = database.Subjects
+                .Where(s => (database.Choices.Where(f => f.UserId == _UserId)
+                .Any(f => f.SubjectId == s.SubjectId)))
+                .OrderBy(s => s.Semester)
+                .Select(s => s)
+                .ToArray();
+            return subjectsList;
+        }
         public void AddSubjectToFavourite(int _UserId, int _SubjId)
         {
             database.Favourites.Add(new Favourites { UserId = _UserId, SubjectId = _SubjId });
@@ -57,6 +67,23 @@ namespace LECHO.Core
         {
             var favouriteToDelete = new Favourites { UserId = _UserId, SubjectId = _SubjId };
             database.Remove(favouriteToDelete);
+            database.SaveChanges();
+        }
+        public void MakeFinalSubjectChoice(int _UserId, int _SubjId)
+        {
+            var subjectToAdd = database.Subjects.FirstOrDefault(c => c.SubjectId == _SubjId);
+            var choices = database.Choices.Where(c => c.UserId==_UserId).ToArray();
+            foreach(Choices chs in choices)
+            {
+                var sbj = database.Subjects.FirstOrDefault(c => c.SubjectId == chs.SubjectId);
+                if (sbj.Semester == subjectToAdd.Semester)
+                {
+                    sbj.NumberOfStudents = sbj.NumberOfStudents - 1;
+                    database.Remove(chs);
+                }
+            }
+            subjectToAdd.NumberOfStudents = subjectToAdd.NumberOfStudents + 1;
+            database.Choices.Add(new Choices { UserId = _UserId, SubjectId = _SubjId });
             database.SaveChanges();
         }
     }

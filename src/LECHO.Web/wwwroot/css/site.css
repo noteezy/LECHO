@@ -194,6 +194,47 @@ div.profile img {
     background: #d9d9d9;
     border-radius: 10px;
 }
+/*RADDIO BUTTON*/
+.final-fav-checkmark {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.final-fav-checkmark input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.final-fav-checkmark span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: #eee;
+}
+.final-fav-checkmark span {
+    border: 3px solid black;
+}
+
+.final-fav-checkmark:hover input ~ span {
+    background-color: #ccc;
+}
+
+.final-fav-checkmark input:checked ~ span {
+    background-image: url("../img/checkmark.png");
+    background-size: cover;
+}
+button.final-choice {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+}
 /*main subject content*/
 div.subjects {
     border: 2px solid black;
@@ -257,7 +298,15 @@ button.all-subjects-fav-button-delete {
     align-items: center;
 }
 
+.link-to-favourite{
+    text-align:center;
+}
 
+.link-to-favourite a{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+}
 /*.subjects .information {
     position:relative;
     width: 906px;
@@ -267,9 +316,8 @@ button.all-subjects-fav-button-delete {
     margin-top:-6px;
 }*/
 /* SUBJECTS PAGE STYLE END */
-
 /* SINGLE SUBJECT INFO PAGE STYLE START */
-div.single-subject{
+div.single-subject {
     margin-top: 30px;
 }
 div.single-subject-header{

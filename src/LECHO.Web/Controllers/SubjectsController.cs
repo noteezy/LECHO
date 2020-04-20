@@ -26,8 +26,8 @@ namespace LECHO.Web.Controllers
             subjectManagement = _subjectManagement;
             logger = _logger;
         }
-        [Authorize]
 
+        [Authorize]
         public ViewResult SubjectsFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -66,6 +66,7 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
+        [Authorize]
         public ViewResult SubjectsSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -104,6 +105,7 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
+        [Authorize]
         public ViewResult FavouriteFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -124,7 +126,6 @@ namespace LECHO.Web.Controllers
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
             
-
             if (!String.IsNullOrEmpty(Search))
             {
                 subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
@@ -132,6 +133,7 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
+        [Authorize]
         public ViewResult FavouriteSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -157,7 +159,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-
         [ResponseCache(NoStore =true, Location =ResponseCacheLocation.None)]
         public IActionResult Index()
         {
@@ -182,6 +183,7 @@ namespace LECHO.Web.Controllers
             logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
         }
 
+        [Authorize]
         public IActionResult SubjectInfo(int id)
         {
             try
@@ -203,6 +205,14 @@ namespace LECHO.Web.Controllers
                 return View("Error");
             }
             return View();
+        }
+
+        [Authorize(Roles = "3")]
+        public void MakeFinalSubjectChoice(int SubjId)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            subjectManagement.MakeFinalSubjectChoice(user.UserId, SubjId);
+            logger.LogInformation("{@User} has made final choice - subject with id {Id} choosen", user, SubjId);
         }
     }
 }
