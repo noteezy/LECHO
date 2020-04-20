@@ -381,7 +381,6 @@ F:\Projects\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\LECHO.Infrastructure.pdb
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.csprojAssemblyReference.cache
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\staticwebassets\LECHO.Web.StaticWebAssets.Manifest.cache
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\staticwebassets\LECHO.Web.StaticWebAssets.xml
-F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.RazorAssemblyInfo.cache
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.RazorAssemblyInfo.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.AssemblyInfoInputs.cache
@@ -449,3 +448,4 @@ F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\Fav
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectInfo.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectsFirstTerm.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectsSecondTerm.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache

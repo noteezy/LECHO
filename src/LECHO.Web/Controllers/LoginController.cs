@@ -39,7 +39,7 @@ namespace LECHO.Web.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> Authorize(Users user)
-        { 
+        {
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Profile", "Account");
             try
@@ -48,7 +48,7 @@ namespace LECHO.Web.Controllers
                 {
                     Users u = accountManagement.GetUser(user.Login);
                     await Authenticate(u);
-                    logger.LogInformation("{@User} has authorized",u);
+                    logger.LogInformation("{@User} has authorized", u);
                     return RedirectToAction("Profile", "Account");
                 }
                 else
@@ -61,7 +61,7 @@ namespace LECHO.Web.Controllers
             {
                 logger.LogWarning("Failed attempt to Authorize with {Login} and {Password}", user.Login, user.Password);
                 return View("Error");
-            }  
+            }
         }
     }
 }

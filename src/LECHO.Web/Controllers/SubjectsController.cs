@@ -80,11 +80,11 @@ namespace LECHO.Web.Controllers
                 }
                 else if (student.Course == 2)
                 {
-                    subjectsList =  subjectManagement.GetSubjects(6);
+                    subjectsList = subjectManagement.GetSubjects(6);
                 }
                 else
                 {
-                    subjectsList =  subjectManagement.GetSubjects(1);
+                    subjectsList = subjectManagement.GetSubjects(1);
                     ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                 }
 
