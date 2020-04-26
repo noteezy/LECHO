@@ -22,10 +22,11 @@ namespace Tests
                 LastName = "testUserLastname",
                 Role = 1};
             var accmock = new Mock<IAccountManagement>();
+            var sbjmock = new Mock<ISubjectManagement>();
             var logmock = new Mock<ILogger<AccountController>>();
             accmock.Setup(a => a.GetUser(It.IsAny<string>())).Returns(testuser);
             var subjMoc = new Mock<ISubjectManagement>();
-            AccountController controller = new AccountController(accmock.Object,logmock.Object);
+            AccountController controller = new AccountController(accmock.Object,sbjmock.Object,logmock.Object);
             var mock = new Mock<HttpContext>();
             mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
             mock.SetupGet(x => x.User.Identity.Name).Returns("sdjsl");
@@ -51,9 +52,9 @@ namespace Tests
             };
             var accmock = new Mock<IAccountManagement>();
             accmock.Setup(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
-            var subjMoc = new Mock<ISubjectManagement>();
+            var sbjmock = new Mock<ISubjectManagement>();
             var logmock = new Mock<ILogger<AccountController>>();
-            AccountController controller = new AccountController(accmock.Object, logmock.Object);
+            AccountController controller = new AccountController(accmock.Object, sbjmock.Object, logmock.Object);
             var mock = new Mock<HttpContext>();
             mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
             controller.ControllerContext.HttpContext = mock.Object;

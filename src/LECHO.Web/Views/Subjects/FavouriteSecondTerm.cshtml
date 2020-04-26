@@ -46,7 +46,12 @@
         Faculties faculty = subjectManagement.GetFaculty(subject.FacultyId);
         Users lecturer = accountManagement.GetLecturer(subject.LecturerId);
         <div class="subjects row">
-            <div class="col-md-1 all-subjects-fav-button"><input type="checkbox"></div>
+            <div class="col-md-1 all-subjects-fav-button">
+                <label class="final-fav-checkmark">
+                    <input type="radio" id="fav-id-@subject.SubjectId" name="fav-id" value="@subject.SubjectId">
+                    <span></span>
+                </label>
+            </div>
             <div class="col-md-7 all-subjects-info">
                 <h1><a asp-controller="Subjects" asp-action="SubjectInfo" asp-route-id="@subject.SubjectId">@subject.Name</a></h1>
                 <p>Кількість студентів, які обрали дисципліну: @subject.NumberOfStudents</p>
@@ -57,5 +62,29 @@
             </div>
         </div>
     }
+    <p id="fav-undefined-warning" style="text-align:center; color:red; display:none;">Спершу оберіть предмет!</p>
+    <button class="final-choice" onclick="make_final_choice()">Зробити остаточний вибір</button>
 </div>
 
+<script>
+    function make_final_choice() {
+        var subject_id = $("input[name=fav-id]:checked").val();
+        if (subject_id) {
+            $.ajax({
+                url: "@Url.Action("MakeFinalSubjectChoice")",
+                method: "POST",
+                data: {
+                    "SubjId": subject_id,
+                },
+                success: function () {
+                    location.href = "/Account/Profile"
+                },
+                error: function () {
+                    alert("Не припустима дія");
+                }
+            });
+        } else {
+            document.getElementById("fav-undefined-warning").style.display = "block";
+        }
+    }
+</script>
