@@ -93,8 +93,8 @@ namespace Tests
                 //mockSet.As<IQueryable<Users>>().Setup(x => x.ElementType).Returns(userlist.ElementType);
                // mockSet.As<IQueryable<Users>>().Setup(x => x.GetEnumerator()).Returns(userlist.GetEnumerator());
                 mock.Mock<LECHOContext>().SetupGet(x => x.Users).Returns(mockSet.Object);
-                var cls = mock.Create<AccountManagement>();
-                var actualUser = cls.GetUser(actualLogin);
+                var AccountManagementMock = mock.Create<AccountManagement>();
+                var actualUser = AccountManagementMock.GetUser(actualLogin);
                 Assert.Equal(expectedFirstName, actualUser.FirstName);
                 Assert.Equal(expectedMiddleName, actualUser.MiddleName);
                 Assert.Equal(expectedLastName,actualUser.LastName);
@@ -110,9 +110,9 @@ namespace Tests
                 mockSet.As<IQueryable<Users>>().Setup(x => x.Provider).Returns(userlist.Provider);
                 mockSet.As<IQueryable<Users>>().Setup(x => x.Expression).Returns(userlist.Expression);
                 mock.Mock<LECHOContext>().SetupGet(x => x.Users).Returns(mockSet.Object);
-                var cls = mock.Create<AccountManagement>();
+                var AccountManagementMock = mock.Create<AccountManagement>();
                 string unexistingLogin = "unexistingLogin";
-                Action tryToFindUser = ()=> cls.GetUser(unexistingLogin);
+                Action tryToFindUser = ()=> AccountManagementMock.GetUser(unexistingLogin);
                 Assert.Throws<UserNotFoundException>(tryToFindUser);
             }
         }
@@ -128,8 +128,8 @@ namespace Tests
                 mockSet.As<IQueryable<Users>>().Setup(x => x.Provider).Returns(userlist.Provider);
                 mockSet.As<IQueryable<Users>>().Setup(x => x.Expression).Returns(userlist.Expression);
                 mock.Mock<LECHOContext>().SetupGet(x => x.Users).Returns(mockSet.Object);
-                var cls = mock.Create<AccountManagement>();
-                bool actualVerificationValue = cls.Verify(Login, Password);
+                var AccountManagementMock = mock.Create<AccountManagement>();
+                bool actualVerificationValue = AccountManagementMock.Verify(Login, Password);
                 Assert.Equal(expectedVerificationValue, actualVerificationValue);
             }
         }
