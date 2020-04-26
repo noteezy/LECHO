@@ -16,7 +16,11 @@ namespace LECHO.Core
             var faculty = database.Faculties.FirstOrDefault(u => u.FacultyId == id);
             return faculty;
         }
-
+        public Subjects GetSingleSubjectById(int id)
+        {
+            var subject = database.Subjects.FirstOrDefault(s => s.SubjectId == id);
+            return subject;
+        }
         public Favourites GetFavourite(int id)
         {
             var subject = database.Favourites.FirstOrDefault(u => u.SubjectId == id);

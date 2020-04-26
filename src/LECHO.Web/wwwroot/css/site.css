@@ -267,3 +267,32 @@ button.all-subjects-fav-button-delete {
     margin-top:-6px;
 }*/
 /* SUBJECTS PAGE STYLE END */
+
+/* SINGLE SUBJECT INFO PAGE STYLE START */
+div.single-subject{
+    margin-top: 30px;
+}
+div.single-subject-header{
+    border-bottom: 1px solid black;
+}
+.single-subject-header h1 {
+    font-size: 25px;
+}
+.single-subject-lecturer {
+    text-align: right;
+    align-items: center;
+}
+.single-subject-info {
+    padding: 0 15px;
+    margin-top: 15px;
+}
+.single-subject-info h1 {
+    font-size: 25px;
+}
+#FacultyMap {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+/* SINGLE SUBJECT INFO PAGE STYLE END */

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -115,14 +116,14 @@ namespace LECHO.Web.Controllers
             }
             else
             {
-                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5); 
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5);
             }
 
             if(subjectsList.Length == 0)
             {
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
-            
+
 
             if (!String.IsNullOrEmpty(Search))
             {
@@ -179,6 +180,29 @@ namespace LECHO.Web.Controllers
             Users user = accountManagement.GetUser(User.Identity.Name);
             subjectManagement.DeleteSubjectFromFavourite(user.UserId, SubjId);
             logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
+        }
+
+        public IActionResult SubjectInfo(int id)
+        {
+            try
+            {
+                var subject = subjectManagement.GetSingleSubjectById(id);
+                ViewData["SubjectName"] = subject.Name;
+                ViewData["NumberOfStudents"] = subject.NumberOfStudents;
+                ViewData["MaxNumberOfStudents"] = subject.MaxNumberOfStudents;
+                ViewData["Description"] = subject.Description;
+                var lecturer = accountManagement.GetLecturer(subject.LecturerId);
+                ViewData["LecturerName"] = lecturer.LastName + " " + lecturer.FirstName[0] + ". " + lecturer.MiddleName[0] + ".";
+                var faculty = subjectManagement.GetFaculty(subject.FacultyId);
+                ViewData["FacultyName"] = faculty.Name;
+                ViewData["FacultyMapLocationX"] = faculty.MapLocationX.ToString("G",CultureInfo.InvariantCulture);
+                ViewData["FacultyMapLocationY"] = faculty.MapLocationY.ToString("G", CultureInfo.InvariantCulture);
+            }
+            catch (System.Exception)
+            {
+                return View("Error");
+            }
+            return View();
         }
     }
 }
