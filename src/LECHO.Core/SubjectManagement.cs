@@ -28,10 +28,9 @@ namespace LECHO.Core
         }
         public Subjects[] GetSubjects(int semester)
         {
-            var subject = database.Subjects.ToArray().Where(s => s.Semester == semester).Select(s => s).ToArray();
+            var subject = database.Subjects.Where(s => s.Semester == semester).Select(s => s).ToArray();
             return subject;
         }
-        public Subjects[] GetSubjects(string title) { return null; }
         public Subjects[] GetSubjectsByTitle(string title, Subjects[] subjects)
         {
             string[] titleParts = title.Split(' ', StringSplitOptions.RemoveEmptyEntries);

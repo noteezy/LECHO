@@ -14,6 +14,7 @@
 *.ide
 *.ide-shm
 *.ide-wal
+**/logs/log.json
 
 # Build results
 [Dd]ebug/
