@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
 using Microsoft.Extensions.Logging;
 using System.Globalization;
-
+using System.Threading.Tasks;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LECHO.Web.Controllers
@@ -49,6 +49,7 @@ namespace LECHO.Web.Controllers
                         subjectsList = subjectManagement.GetSubjects(1);
                         ViewData["Information"] = "Вибіркові дисципліни для вас не опубліковані.";
                     }
+
             }
             else
             {
@@ -58,12 +59,12 @@ namespace LECHO.Web.Controllers
                 .ToArray();
             }
 
-                if (!String.IsNullOrEmpty(Search))
-                {
-                    subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
-                }
-                return View(subjectsList);
+            if (!String.IsNullOrEmpty(Search))
+            {
+                subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
             }
+            return View(subjectsList);
+        }
 
         [Authorize]
         public ViewResult SubjectsSecondTerm(string Search)
@@ -124,7 +125,7 @@ namespace LECHO.Web.Controllers
             {
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
-
+            
             if (!String.IsNullOrEmpty(Search))
             {
                 subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
@@ -157,6 +158,7 @@ namespace LECHO.Web.Controllers
             }
             return View(subjectsList);
         }
+
         [ResponseCache(NoStore =true, Location =ResponseCacheLocation.None)]
         public IActionResult Index()
         {
@@ -211,6 +213,29 @@ namespace LECHO.Web.Controllers
             Users user = accountManagement.GetUser(User.Identity.Name);
             subjectManagement.MakeFinalSubjectChoice(user.UserId, SubjId);
             logger.LogInformation("{@User} has made final choice - subject with id {Id} choosen", user, SubjId);
+        }
+
+        public async Task<IActionResult> AddNewSubject(Subjects subject)
+        {
+            Users user = accountManagement.GetUser(User.Identity.Name);
+            if(user.Role == 2) { subject.LecturerId = user.UserId; }
+            if (!String.IsNullOrEmpty(subject.Name) && !String.IsNullOrEmpty(subject.Description) && !String.IsNullOrEmpty(subject.Faculty.Name) && !String.IsNullOrEmpty(subject.Lecturer.User.LastName) && subject.Semester != 0)
+            {
+                subject.FacultyId = subjectManagement.GetFacultyId(subject.Faculty.Name);
+                if (user.Role != 2) { subject.LecturerId = accountManagement.GetLecturerId(subject.Lecturer.User.LastName); }
+                subjectManagement.AddNewSubject(subject.Name, subject.Description, subject.FacultyId, subject.LecturerId, subject.Semester);
+                return RedirectToAction("Profile", "Account");
+            }
+            return View();
+        }
+        public async Task<IActionResult> AddNewFaculty(Faculties faculty)
+        {
+                if (!String.IsNullOrEmpty(faculty.Name) && !String.IsNullOrEmpty(faculty.Description) && !String.IsNullOrEmpty(faculty.Address) && faculty.MapLocationX != 0.0 && faculty.MapLocationY != 0.0)
+                {
+                    subjectManagement.AddNewFaculty(faculty.Name, faculty.Description, faculty.Address, faculty.MapLocationX, faculty.MapLocationY);
+                    return RedirectToAction("Profile", "Account");
+                }
+                return View(); 
         }
     }
 }

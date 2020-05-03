@@ -838,23 +838,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ksoov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
+      "projectUniqueName": "D:\\GitHub\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
       "projectName": "LECHO.Core",
-      "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\LECHO\\src\\LECHO.Core\\obj\\",
+      "projectPath": "D:\\GitHub\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj",
+      "packagesPath": "C:\\Users\\ksoov\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\LECHO\\src\\LECHO.Core\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ksoov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -867,8 +863,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
-              "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj"
+            "D:\\GitHub\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
+              "projectPath": "D:\\GitHub\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj"
             }
           }
         }
@@ -918,7 +914,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

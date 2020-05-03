@@ -968,23 +968,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ksoov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
+      "projectUniqueName": "D:\\GitHub\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
       "projectName": "LECHO.Infrastructure",
-      "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\obj\\",
+      "projectPath": "D:\\GitHub\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\ksoov\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\LECHO\\src\\LECHO.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ksoov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1060,7 +1056,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,29 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject ISubjectManagement subjectManagement;
+@inject IAccountManagement accountManagement;
+@model LECHO.Infrastructure.Users
+@{
+    ViewData["Title"] = "AddNewUser";
+    Layout = "_LayoutAdmin";
+}
+
+
+    <div id="login-form">
+        @using (Html.BeginForm("AddNewUser", "Account", FormMethod.Get))
+        {
+            @Html.EditorFor(Model => Model.LastName, new { htmlAttributes = new { @placeholder = "Прізвище" } })
+            @Html.EditorFor(Model => Model.FirstName, new { htmlAttributes = new { @placeholder = "Ім'я" } })
+            @Html.EditorFor(Model => Model.MiddleName, new { htmlAttributes = new { @placeholder = "По-батькові" } })
+            @Html.DropDownListFor(Model => Model.Role,
+                  new List<SelectListItem> {
+                       new SelectListItem { Value = "2" , Text = "Викладач" },
+                       new SelectListItem { Value = "3" , Text = "Студент" }
+                    }, "Роль",
+                  new { @placeholder = "Роль", @class = "drop-down-list" })
+            @Html.EditorFor(Model => Model.Login, new { htmlAttributes = new { @placeholder = "Логін" } })
+            @Html.PasswordFor(Model => Model.Password, new { @placeholder = "Пароль" })
+            <button type="submit" name="AddNewUser" value="Account">Додати користувача</button>
+        }
+    </div>
+
