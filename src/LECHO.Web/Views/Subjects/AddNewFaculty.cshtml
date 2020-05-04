@@ -1,0 +1,22 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject ISubjectManagement subjectManagement;
+@inject IAccountManagement accountManagement;
+@model LECHO.Infrastructure.Faculties;
+@{
+    ViewData["Title"] = "AddNewFaculty";
+    Layout = "_LayoutAdmin";
+}
+
+<div id="login-form">
+    @using (Html.BeginForm("AddNewFaculty", "Subjects", FormMethod.Get))
+    {
+        @Html.EditorFor(Model => Model.Name, new { htmlAttributes = new { @placeholder = "Назва факультету" } })
+        @Html.EditorFor(Model => Model.Description, new { htmlAttributes = new { @placeholder = "Сайт" } })
+        @Html.EditorFor(Model => Model.Address, new { htmlAttributes = new { @placeholder = "Адреса" } })
+        @Html.EditorFor(Model => Model.MapLocationX, new { htmlAttributes = new { @placeholder = "Координата Х" } })
+        @Html.EditorFor(Model => Model.MapLocationY, new { htmlAttributes = new { @placeholder = "Координата Y" } })
+        
+        <button type="submit" name="AddNewFaculty" value="Subjects">Додати факультет</button>
+    }
+</div>

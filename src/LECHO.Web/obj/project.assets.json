@@ -7360,23 +7360,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ksoov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
+      "projectUniqueName": "D:\\GitHub\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
       "projectName": "LECHO.Web",
-      "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\LECHO\\src\\LECHO.Web\\obj\\",
+      "projectPath": "D:\\GitHub\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
+      "packagesPath": "C:\\Users\\ksoov\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\LECHO\\src\\LECHO.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ksoov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7389,8 +7385,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj": {
-              "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj"
+            "D:\\GitHub\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj": {
+              "projectPath": "D:\\GitHub\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj"
             }
           }
         }
@@ -7444,7 +7440,7 @@
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.0.2, 3.0.2]"
+            "version": "[3.0.3, 3.0.3]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
@@ -7463,7 +7459,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
