@@ -1,0 +1,42 @@
+﻿@using LECHO.Infrastructure;
+@using LECHO.Core;
+@inject ISubjectManagement subjectManagement;
+@inject IAccountManagement accountManagement;
+@model LECHO.Infrastructure.Subjects;
+@{
+    string[] lecturers = accountManagement.GetLecturers();
+    string[] faculties = subjectManagement.GetFaculties();
+}
+@{
+    ViewData["Title"] = "AddNewSubject";
+    if (User.IsInRole("1"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (User.IsInRole("2"))
+    {
+        Layout = "_LayoutLecturer";
+    }
+}
+
+    <div id="login-form">
+        @using (Html.BeginForm("AddNewSubject", "Subjects", FormMethod.Get))
+        {
+            @Html.EditorFor(Model => Model.Name, new { htmlAttributes = new { @placeholder = "Назва предмету" } })
+            @Html.TextAreaFor(Model => Model.Description, 4, 38, new { @placeholder = "Опис", @class = "drop-down-list" })
+            @Html.DropDownListFor(Model => Model.Faculty.Name, new SelectList(faculties), "Факультет", new { @placeholder = "Факультет", @class = "drop-down-list" })
+            if (User.IsInRole("1")) { 
+                @Html.DropDownListFor(Model => Model.Lecturer.User.LastName, new SelectList(lecturers), "Викладач", new { @placeholder = "Викладач", @class = "drop-down-list" })
+            }
+            @Html.DropDownListFor(Model => Model.Semester,
+                  new List<SelectListItem> {
+                       new SelectListItem { Value = "3", Text = "Семестр 3" },
+                       new SelectListItem { Value = "4", Text = "Семестр 4" },
+                       new SelectListItem { Value = "5", Text = "Семестр 5" },
+                       new SelectListItem { Value = "6", Text = "Семестр 6" }
+                    }, "Семестр",
+                  new { @placeholder = "Семестр", @class="drop-down-list" })
+            <button type="submit" name="AddNewSubject" value="Subjects">Додати предмет</button>
+        }
+    </div>
+

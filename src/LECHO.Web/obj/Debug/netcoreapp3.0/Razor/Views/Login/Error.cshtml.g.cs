@@ -26,23 +26,23 @@ using LECHO.Web.Models;
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"34f4a5f921222dd3f0f98c9565249d6cdda29722", @"/Views/Login/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a8af5948a4fefbe77142bffeb4f25ee7c2410728", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e2fa19804d56b6596545f99785a5f1dbffb9496", @"/Views/Login/Error.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2fc4ef5490508005dada146d90cd85af2b8fee19", @"/Views/_ViewImports.cshtml")]
     public class Views_Login_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
-            WriteLiteral("\r\n");
+            WriteLiteral("\n");
 #nullable restore
 #line 2 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Login\Error.cshtml"
-  
+
     ViewData["Title"] = "Error";
 
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("\r\n<h1>Error</h1>\r\n\r\n");
+            WriteLiteral("\n<h1>Error</h1>\n\n");
         }
         #pragma warning restore 1998
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

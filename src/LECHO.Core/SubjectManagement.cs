@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using LECHO.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace LECHO.Core
 {
@@ -11,10 +12,39 @@ namespace LECHO.Core
         {
             database = dm;
         }
+        public void AddNewSubject(string name, string description, int faculty_id, int lecturer_id, int? semester)
+        {
+            database.Subjects.Add(new Subjects { Name = name, Description = description, FacultyId = faculty_id, LecturerId = lecturer_id, NumberOfStudents = 0, MaxNumberOfStudents = 200, Semester = semester });
+            database.SaveChanges();
+        }
+        public void AddNewFaculty(string name, string description, string address, double map_location_x, double map_location_y)
+        {
+
+            database.Faculties.Add(new Faculties { Name = name, Description = description, Address = address, MapLocationX = map_location_x, MapLocationY = map_location_y});
+            database.SaveChanges();
+        }
         public Faculties GetFaculty(int id)
         {
             var faculty = database.Faculties.FirstOrDefault(u => u.FacultyId == id);
             return faculty;
+        }
+        public string[] GetFaculties()
+        {
+            var f = database.Faculties.ToArray();
+            string[] faculties = new string[f.Length];
+            for (int i = 0; i < f.Length; i++)
+            {
+                faculties[i] = f[i].Name;
+            }
+            return faculties;
+        }
+
+        public int GetFacultyId(string name)
+        {
+            var f = database.Faculties.ToArray();
+            string[] titleParts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int fId = f.Where(r => name.Any(t => r.Name.Contains(t))).Select(r => r).FirstOrDefault().FacultyId;
+            return fId;
         }
         public Subjects GetSingleSubjectById(int id)
         {

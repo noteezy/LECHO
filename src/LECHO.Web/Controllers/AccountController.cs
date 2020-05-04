@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using LECHO.Infrastructure;
 using Serilog;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LECHO.Web.Controllers
 {
@@ -37,6 +38,15 @@ namespace LECHO.Web.Controllers
             ViewData["MiddleName"] = user.MiddleName;
             ViewData["Role"] = accountManagement.GetRoleName(user.Role);
             return View(subjects);
+        }
+        public async Task<IActionResult> AddNewUser(Users user)
+        {
+            if(!String.IsNullOrEmpty(user.LastName) && !String.IsNullOrEmpty(user.FirstName) && !String.IsNullOrEmpty(user.MiddleName) && !String.IsNullOrEmpty(user.Login) && !String.IsNullOrEmpty(user.Password) && user.Role != 0)
+            {
+                accountManagement.AddNewUser(user.LastName, user.FirstName, user.MiddleName, user.Role, user.Login, user.Password);
+                return RedirectToAction("Profile", "Account");
+            }
+            return View();
         }
         public async Task<IActionResult> Logout()
         {
