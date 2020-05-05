@@ -246,7 +246,6 @@ D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\LECHO.Infrastructure
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.csprojAssemblyReference.cache
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\staticwebassets\LECHO.Web.StaticWebAssets.Manifest.cache
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\staticwebassets\LECHO.Web.StaticWebAssets.xml
-D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.RazorAssemblyInfo.cache
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.RazorAssemblyInfo.cs
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.AssemblyInfoInputs.cache
@@ -612,3 +611,11 @@ D:\GitHub\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.dll
 D:\GitHub\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.pdb
 D:\GitHub\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.genruntimeconfig.cache
 D:\GitHub\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\AddNewFaculty.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Account\AddNewUser.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\AddNewFaculty.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\AddNewSubject.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\libman.json
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\News\NewsPage.cshtml.g.cs
+D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\Microsoft.AspNet.SignalR.Core.dll
+D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache

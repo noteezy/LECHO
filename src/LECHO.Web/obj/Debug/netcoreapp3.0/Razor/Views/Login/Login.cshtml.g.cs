@@ -26,8 +26,8 @@ using LECHO.Web.Models;
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e0b0399ea88e88d61ccbadc634b2a165a3affd43", @"/Views/Login/Login.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2fc4ef5490508005dada146d90cd85af2b8fee19", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"efb6521701e1e7a5a3138fce6e3c40435930fc6f", @"/Views/Login/Login.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a8af5948a4fefbe77142bffeb4f25ee7c2410728", @"/Views/_ViewImports.cshtml")]
     public class Views_Login_Login : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<LECHO.Infrastructure.Users>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/img/temp_logo.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -58,7 +58,7 @@ using LECHO.Web.Models;
         {
 #nullable restore
 #line 2 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Login\Login.cshtml"
-
+  
     ViewData["Title"] = "Login";
 
 #line default
@@ -79,12 +79,12 @@ using LECHO.Web.Models;
             }
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral("\n");
+            WriteLiteral("\r\n");
 #nullable restore
 #line 9 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Login\Login.cshtml"
      using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
     {
-
+        
 
 #line default
 #line hidden
@@ -103,7 +103,7 @@ using LECHO.Web.Models;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("        <button type=\"submit\" name=\"name\" value=\"Login\">Увійти</button>\n");
+            WriteLiteral("        <button type=\"submit\" name=\"name\" value=\"Login\">Увійти</button>\r\n");
 #nullable restore
 #line 14 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Login\Login.cshtml"
     }
@@ -111,7 +111,7 @@ using LECHO.Web.Models;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</div>\n\n\n");
+            WriteLiteral("</div>\r\n\r\n\r\n");
         }
         #pragma warning restore 1998
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

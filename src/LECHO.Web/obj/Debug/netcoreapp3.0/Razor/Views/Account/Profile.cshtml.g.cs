@@ -40,8 +40,8 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"30dc0178cc71acc2e4df599311bb9391608598c5", @"/Views/Account/Profile.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2fc4ef5490508005dada146d90cd85af2b8fee19", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7945eb19896f50a797770f00f4beae2f33d20c3a", @"/Views/Account/Profile.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a8af5948a4fefbe77142bffeb4f25ee7c2410728", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_Profile : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/img/profile.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +74,7 @@ using LECHO.Core;
         {
 #nullable restore
 #line 5 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
-
+  
     ViewData["Title"] = "Profile";
     if (User.IsInRole("1"))
     {
@@ -106,7 +106,7 @@ using LECHO.Core;
             }
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral("\n    <h1>");
+            WriteLiteral("\r\n    <h1>");
 #nullable restore
 #line 24 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
    Write(ViewData["Role"]);
@@ -114,7 +114,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</h1>\n    <h2>Прізвище: ");
+            WriteLiteral("</h1>\r\n    <h2>Прізвище: ");
 #nullable restore
 #line 25 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
              Write(ViewData["LastName"]);
@@ -122,7 +122,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</h2>\n    <h2>Ім\'я: ");
+            WriteLiteral("</h2>\r\n    <h2>Ім\'я: ");
 #nullable restore
 #line 26 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
          Write(ViewData["FirstName"]);
@@ -130,7 +130,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</h2>\n    <h2>По-батькові: ");
+            WriteLiteral("</h2>\r\n    <h2>По-батькові: ");
 #nullable restore
 #line 27 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
                 Write(ViewData["MiddleName"]);
@@ -138,7 +138,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</h2>\n</div>\n\n");
+            WriteLiteral("</h2>\r\n</div>\r\n\r\n");
 #nullable restore
 #line 30 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
  foreach (var subject in Model)
@@ -196,7 +196,7 @@ using LECHO.Core;
             }
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral("</h1>\n            <p>Кількість студентів, які обрали дисципліну: ");
+            WriteLiteral("</h1>\r\n            <p>Кількість студентів, які обрали дисципліну: ");
 #nullable restore
 #line 38 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
                                                       Write(subject.NumberOfStudents);
@@ -204,7 +204,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</p>\n        </div>\n        <div class=\"col-md-4 all-subjects-lecture-info\">\n            <h1>");
+            WriteLiteral("</p>\r\n        </div>\r\n        <div class=\"col-md-4 all-subjects-lecture-info\">\r\n            <h1>");
 #nullable restore
 #line 41 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
            Write(lecturer.LastName);
@@ -228,7 +228,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral(".</h1>\n            <h6>");
+            WriteLiteral(".</h1>\r\n            <h6>");
 #nullable restore
 #line 42 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
            Write(faculty.Name);
@@ -236,7 +236,7 @@ using LECHO.Core;
 #line default
 #line hidden
 #nullable disable
-            WriteLiteral("</h6>\n        </div>\n    </div>\n");
+            WriteLiteral("</h6>\r\n        </div>\r\n    </div>\r\n");
 #nullable restore
 #line 45 "D:\Projects\git\LECHO\src\LECHO.Web\Views\Account\Profile.cshtml"
 }
