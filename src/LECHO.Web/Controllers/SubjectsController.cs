@@ -118,14 +118,15 @@ namespace LECHO.Web.Controllers
             }
             else
             {
-                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5); 
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5);
             }
 
             if(subjectsList.Length == 0)
             {
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
-            
+
+
             if (!String.IsNullOrEmpty(Search))
             {
                 subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);

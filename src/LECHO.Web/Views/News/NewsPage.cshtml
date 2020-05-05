@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "NewsPage";
+}
+
+<h1>NewsPage</h1>
+<p id="news">
+    @if (User.IsInRole("1"))
+    {
+        <textarea id="newsTextArea"></textarea>
+        <button id="sendNews">Надіслати</button>
+    }
+    <ul id="newsList"></ul>
+</p>
+@section Scripts{
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script>
+        console.log("work");
+        var connection = new signalR.HubConnectionBuilder().withUrl("/NewsHub").build();
+        connection.on("ReceiveMessage", function (message) {
+            var msg = message;
+            var li = document.createElement("li");
+            li.textContent = msg;
+            document.getElementById("newsList").appendChild(li);
+        });
+        connection.start().then(() => { console.log("connection started") });
+        document.getElementById("sendNews").addEventListener("click", function (event) {
+            console.log("click click");
+            var message = document.getElementById("newsTextArea").value;
+            console.log("ttt" + message);
+            connection.invoke("PostNews", message).catch(function (err) {
+                return console.error(err.toString());
+            });
+            event.preventDefault();
+        });
+    </script>
+}

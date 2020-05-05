@@ -11,7 +11,6 @@ namespace LECHO.Core
         Subjects GetSingleSubjectById(int id);
         Favourites GetFavourite(int id);
         Subjects[] GetSubjects(int semester);
-        Subjects[] GetSubjects(string title);
         Subjects[] GetSubjectsByTitle(string title, Subjects[] subjects);
         Subjects[] GetFavouriteSubjects(int _UserId, int semester);
         Subjects[] GetStudentsFinalChoice(int _UserId); 
