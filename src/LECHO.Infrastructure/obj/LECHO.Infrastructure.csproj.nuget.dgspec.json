@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {}
+    "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
+    "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
+        "projectUniqueName": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
         "projectName": "LECHO.Infrastructure",
-        "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Infrastructure\\obj\\",
+        "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\LECHO.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\LECHO\\src\\LECHO.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,6 +78,14 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {

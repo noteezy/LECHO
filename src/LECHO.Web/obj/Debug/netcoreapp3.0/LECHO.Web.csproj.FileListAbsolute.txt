@@ -447,7 +447,6 @@ F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\Fav
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectInfo.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectsFirstTerm.cshtml.g.cs
 F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\SubjectsSecondTerm.cshtml.g.cs
-F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache
 D:\GitHub\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\appsettings.Development.json
 D:\GitHub\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\appsettings.json
 D:\GitHub\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\Logs\log.json
@@ -619,3 +618,11 @@ D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\libman.json
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\News\NewsPage.cshtml.g.cs
 D:\Projects\git\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\Microsoft.AspNet.SignalR.Core.dll
 D:\Projects\git\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache
+F:\Projects\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\libman.json
+F:\Projects\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\Microsoft.AspNet.SignalR.Core.dll
+F:\Projects\LECHO\src\LECHO.Web\bin\Debug\netcoreapp3.0\System.Net.WebSockets.WebSocketProtocol.dll
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Account\AddNewUser.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\News\NewsPage.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\AddNewFaculty.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\Razor\Views\Subjects\AddNewSubject.cshtml.g.cs
+F:\Projects\LECHO\src\LECHO.Web\obj\Debug\netcoreapp3.0\LECHO.Web.MvcApplicationPartsAssemblyInfo.cache

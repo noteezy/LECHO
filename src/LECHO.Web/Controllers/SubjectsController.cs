@@ -216,6 +216,7 @@ namespace LECHO.Web.Controllers
             logger.LogInformation("{@User} has made final choice - subject with id {Id} choosen", user, SubjId);
         }
 
+        [Authorize(Roles = "1,2")]
         public async Task<IActionResult> AddNewSubject(Subjects subject)
         {
             Users user = accountManagement.GetUser(User.Identity.Name);
@@ -229,6 +230,8 @@ namespace LECHO.Web.Controllers
             }
             return View();
         }
+
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> AddNewFaculty(Faculties faculty)
         {
                 if (!String.IsNullOrEmpty(faculty.Name) && !String.IsNullOrEmpty(faculty.Description) && !String.IsNullOrEmpty(faculty.Address) && faculty.MapLocationX != 0.0 && faculty.MapLocationY != 0.0)
