@@ -358,7 +358,7 @@ namespace Tests
         [Theory]
         [InlineData(2,2)]
         [InlineData(3, 1)]
-        [InlineData(5, 0)]
+        [InlineData(7, 0)]
         public void getStudentsFinalChoiseLengthTest(int testUserId,int expectedLength)
         {
             using (var mock = AutoMock.GetLoose())
