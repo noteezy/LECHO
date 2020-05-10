@@ -400,5 +400,29 @@ namespace Tests
                 Assert.Equal(expectedSubjects, actualSubjects);
             }
         }
+        [Theory]
+        [InlineData(7, 0, 0)]
+        [InlineData(1, 1, 1)]
+        [InlineData(6, 3, 1)]
+        [InlineData(6, 8, 1)]
+        public void makeFinalChoiseDeleteInvokationTest(int TestStudentId, int testSubjectId,int expectedTimeToInvoke )
+        {
+            using (var mock = AutoMock.GetLoose())
+            {
+                IQueryable<Choices> schoisesList = testchoices.AsQueryable();
+                var choisesMockSet = new Mock<DbSet<Choices>>();
+                choisesMockSet.As<IQueryable<Choices>>().Setup(x => x.Provider).Returns(schoisesList.Provider);
+                choisesMockSet.As<IQueryable<Choices>>().Setup(x => x.Expression).Returns(schoisesList.Expression);
+                IQueryable<Subjects> subjectList = testSubjects.AsQueryable();
+                var SubjectsMockSet = new Mock<DbSet<Subjects>>();
+                SubjectsMockSet.As<IQueryable<Subjects>>().Setup(x => x.Provider).Returns(subjectList.Provider);
+                SubjectsMockSet.As<IQueryable<Subjects>>().Setup(x => x.Expression).Returns(subjectList.Expression);
+                mock.Mock<LECHOContext>().SetupGet(x => x.Choices).Returns(choisesMockSet.Object);
+                mock.Mock<LECHOContext>().SetupGet(x => x.Subjects).Returns(SubjectsMockSet.Object);
+                var SubjectManagementMock = mock.Create<SubjectManagement>();
+                SubjectManagementMock.MakeFinalSubjectChoice(TestStudentId, testSubjectId);
+                mock.Mock<LECHOContext>().Verify(x => x.Remove(It.IsAny<Choices>()), Times.Exactly(expectedTimeToInvoke));
+            }
+        }
     }
 }
