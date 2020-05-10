@@ -8036,23 +8036,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Users\\nazar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
+      "projectUniqueName": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
       "projectName": "LECHO.Web",
-      "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\LECHO\\src\\LECHO.Web\\obj\\",
+      "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\LECHO.Web.csproj",
+      "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8065,8 +8065,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj": {
-              "projectPath": "F:\\Projects\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj"
+            "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj": {
+              "projectPath": "D:\\Projects\\git\\LECHO\\src\\LECHO.Core\\LECHO.Core.csproj"
             }
           }
         }
@@ -8129,14 +8129,6 @@
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[3.0.2, 3.0.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {
