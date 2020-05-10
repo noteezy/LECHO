@@ -395,7 +395,7 @@ div.single-subject-header{
     font-size: 14px;
 }
 
-    .add-new-user button:hover,
+    /*.add-new-user button:hover,
     button:focus {
         color: #999;
     }
@@ -404,6 +404,49 @@ div.single-subject-header{
         background-color: white;
         color: black;
         outline: 1px solid black;
-    }
+    }*/
 
 /* ADD NEW USER PAGE STYLE END */
+
+.add-new-user button:hover,
+button:focus {
+    color: #999;
+}
+
+.add-new-user button:active {
+    background-color: white;
+    color: black;
+    outline: 1px solid black;
+}
+
+/* ADD NEW USER PAGE STYLE END */
+/* NEWS PAGE STYLE START */
+textarea#newsTextArea {
+    height: 100px;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+textarea#newsTextArea:focus {
+    outline: 1px solid black;
+}
+
+button#sendNews {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+button#sendNews {
+    height: 45px;
+    width: 130px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: white;
+}
+button#sendNews:focus{
+    outline: none;
+}
+/* NEWS PAGE STYLE END */

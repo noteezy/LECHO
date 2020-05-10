@@ -27,7 +27,6 @@ namespace LECHO.Web.Controllers
             logger = _logger;
         }
 
-        [Authorize]
         public ViewResult SubjectsFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -66,7 +65,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult SubjectsSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -105,7 +103,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult FavouriteFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -118,14 +115,15 @@ namespace LECHO.Web.Controllers
             }
             else
             {
-                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5); 
+                subjectsList = subjectManagement.GetFavouriteSubjects(user.UserId, 5);
             }
 
             if(subjectsList.Length == 0)
             {
                 ViewData["Information"] = "Ви ще не обрали жодної дисципліни";
             }
-            
+
+
             if (!String.IsNullOrEmpty(Search))
             {
                 subjectsList = subjectManagement.GetSubjectsByTitle(Search, subjectsList);
@@ -133,7 +131,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult FavouriteSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -183,7 +180,6 @@ namespace LECHO.Web.Controllers
             logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
         }
 
-        [Authorize]
         public IActionResult SubjectInfo(int id)
         {
             try
@@ -215,6 +211,7 @@ namespace LECHO.Web.Controllers
             logger.LogInformation("{@User} has made final choice - subject with id {Id} choosen", user, SubjId);
         }
 
+        [Authorize(Roles = "1,2")]
         public async Task<IActionResult> AddNewSubject(Subjects subject)
         {
             Users user = accountManagement.GetUser(User.Identity.Name);
@@ -228,6 +225,7 @@ namespace LECHO.Web.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> AddNewFaculty(Faculties faculty)
         {
                 if (!String.IsNullOrEmpty(faculty.Name) && !String.IsNullOrEmpty(faculty.Description) && !String.IsNullOrEmpty(faculty.Address) && faculty.MapLocationX != 0.0 && faculty.MapLocationY != 0.0)

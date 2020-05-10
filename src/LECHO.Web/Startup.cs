@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using LECHO.Web.Hubs;
 using Serilog;
 
 namespace LECHO.Web
@@ -39,6 +40,7 @@ namespace LECHO.Web
             services.AddDbContext<LECHOContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
             services.AddScoped<IAccountManagement, AccountManagement>();
             services.AddScoped<ISubjectManagement, SubjectManagement>();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,12 +65,18 @@ namespace LECHO.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NewsHub>("/NewsHub");
+            });
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Login}/{action=Login}/{id?}");
+                //endpoints.MapHub<NewsHub>("{controller=News}/{action=NewsPage}");
             });
         }
     }

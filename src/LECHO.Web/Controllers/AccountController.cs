@@ -28,7 +28,7 @@ namespace LECHO.Web.Controllers
             subjectManagement = _subjectManagement;
             logger = _logger;
         }
-        [Authorize]
+        
         public IActionResult Profile()
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -39,6 +39,7 @@ namespace LECHO.Web.Controllers
             ViewData["Role"] = accountManagement.GetRoleName(user.Role);
             return View(subjects);
         }
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> AddNewUser(Users user)
         {
             if(!String.IsNullOrEmpty(user.LastName) && !String.IsNullOrEmpty(user.FirstName) && !String.IsNullOrEmpty(user.MiddleName) && !String.IsNullOrEmpty(user.Login) && !String.IsNullOrEmpty(user.Password) && user.Role != 0)
