@@ -28,7 +28,7 @@ namespace LECHO.Web.Controllers
             subjectManagement = _subjectManagement;
             logger = _logger;
         }
-        [Authorize]
+        
         public IActionResult Profile()
         {
             var user = accountManagement.GetUser(User.Identity.Name);

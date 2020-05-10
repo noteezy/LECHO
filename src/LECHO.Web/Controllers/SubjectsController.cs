@@ -27,7 +27,6 @@ namespace LECHO.Web.Controllers
             logger = _logger;
         }
 
-        [Authorize]
         public ViewResult SubjectsFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -66,7 +65,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult SubjectsSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -105,7 +103,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult FavouriteFirstTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -134,7 +131,6 @@ namespace LECHO.Web.Controllers
             return View(subjectsList);
         }
 
-        [Authorize]
         public ViewResult FavouriteSecondTerm(string Search)
         {
             var user = accountManagement.GetUser(User.Identity.Name);
@@ -184,7 +180,6 @@ namespace LECHO.Web.Controllers
             logger.LogInformation("{@User} has deleted subject with id {Id} from favourites", user, SubjId);
         }
 
-        [Authorize]
         public IActionResult SubjectInfo(int id)
         {
             try

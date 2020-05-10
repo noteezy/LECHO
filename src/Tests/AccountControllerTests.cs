@@ -11,16 +11,33 @@ using Microsoft.Extensions.Logging;
 
 namespace Tests
 {
-
+    
     public class AccountControllerTests
     {
-        [Fact]
-        public void TestProfileViewData()
+        private Users testuser = new Users
         {
-            Users testuser = new Users { FirstName = "testUserFirstname",
-                MiddleName = "testUserMiddlename",
-                LastName = "testUserLastname",
-                Role = 1};
+            FirstName = "TestUserFirstname",
+            MiddleName = "testUserMiddlename",
+            LastName = "testUserLastname",
+            Role = 1
+        };
+        [Fact]
+        public void ProfileViewResultNotNullTest()
+        {
+            var accmock = new Mock<IAccountManagement>();
+            var sbjmock = new Mock<ISubjectManagement>();
+            var logmock = new Mock<ILogger<AccountController>>();
+            accmock.Setup(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
+            AccountController controller = new AccountController(accmock.Object, sbjmock.Object, logmock.Object);
+            var mock = new Mock<HttpContext>();
+            mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
+            controller.ControllerContext.HttpContext = mock.Object;
+            var result = controller.Profile() as ViewResult;
+            Assert.NotNull(result);
+        }
+        [Fact]
+        public void ProfileViewDataIsNotNullTests()
+        {
             var accmock = new Mock<IAccountManagement>();
             var sbjmock = new Mock<ISubjectManagement>();
             var logmock = new Mock<ILogger<AccountController>>();
@@ -31,37 +48,25 @@ namespace Tests
             mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
             mock.SetupGet(x => x.User.Identity.Name).Returns("sdjsl");
             controller.ControllerContext.HttpContext = mock.Object;
-
             Assert.NotNull((controller.Profile() as ViewResult).ViewData["FirstName"]);
             Assert.NotNull((controller.Profile() as ViewResult).ViewData["MiddleName"]);
             Assert.NotNull((controller.Profile() as ViewResult).ViewData["LastName"]);
-            Assert.Equal(testuser.FirstName, (controller.Profile() as ViewResult).ViewData["FirstName"]);
-            Assert.Equal(testuser.MiddleName, (controller.Profile() as ViewResult).ViewData["MiddleName"]);
-            Assert.Equal(testuser.LastName, (controller.Profile() as ViewResult).ViewData["LastName"]);
         }
-
         [Fact]
-        public void ProfileViewResultNotNullTest()
+        public void ProfileViewDataIsValidTests()
         {
-            Users testuser = new Users
-            {
-                FirstName = "TestUserFirstname",
-                MiddleName = "testUserMiddlename",
-                LastName = "testUserLastname",
-                Role = 1
-            };
             var accmock = new Mock<IAccountManagement>();
-            accmock.Setup(a => a.GetUser(It.IsAny<String>())).Returns(testuser);
             var sbjmock = new Mock<ISubjectManagement>();
             var logmock = new Mock<ILogger<AccountController>>();
+            accmock.Setup(a => a.GetUser(It.IsAny<string>())).Returns(testuser);
+            var subjMoc = new Mock<ISubjectManagement>();
             AccountController controller = new AccountController(accmock.Object, sbjmock.Object, logmock.Object);
             var mock = new Mock<HttpContext>();
             mock.SetupGet(x => x.User.Identity.IsAuthenticated).Returns(true);
             controller.ControllerContext.HttpContext = mock.Object;
-
-            var result = controller.Profile() as ViewResult;
-
-            Assert.NotNull(result);
-        }
+            Assert.Equal(testuser.FirstName, (controller.Profile() as ViewResult).ViewData["FirstName"]);
+            Assert.Equal(testuser.MiddleName, (controller.Profile() as ViewResult).ViewData["MiddleName"]);
+            Assert.Equal(testuser.LastName, (controller.Profile() as ViewResult).ViewData["LastName"]);
+        }           
     }
 }
