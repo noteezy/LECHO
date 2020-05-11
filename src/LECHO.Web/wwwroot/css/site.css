@@ -395,19 +395,6 @@ div.single-subject-header{
     font-size: 14px;
 }
 
-    /*.add-new-user button:hover,
-    button:focus {
-        color: #999;
-    }
-
-    .add-new-user button:active {
-        background-color: white;
-        color: black;
-        outline: 1px solid black;
-    }*/
-
-/* ADD NEW USER PAGE STYLE END */
-
 .add-new-user button:hover,
 button:focus {
     color: #999;

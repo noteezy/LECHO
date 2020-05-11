@@ -225,6 +225,7 @@ namespace LECHO.Web.Controllers
             }
             return View();
         }
+
         [Authorize(Roles = "1")]
         public async Task<IActionResult> AddNewFaculty(Faculties faculty)
         {
